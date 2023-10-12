@@ -9,10 +9,17 @@ package productos.modelos;
  * @author marti
  */
 public enum Categoria {
-    ENTRADA, PLATO_PRINCIPAL, POSTRE;
+    ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato principal"), POSTRE("Postre");
+    
+    private String value;
+    
+    private Categoria(String value){
+        this.value=value;
+    }
     
     @Override    
     public String toString() {
-        return "Categoria{" + '}';
+        return "Categoria{"+ this.value+ "}" ;
     }
+    
 }
