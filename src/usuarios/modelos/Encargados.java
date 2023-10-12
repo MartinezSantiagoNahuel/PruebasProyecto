@@ -54,4 +54,11 @@ public class Encargados {
         this.nombre = nombre;
     }
     
+    public void mostrar(){
+        System.out.println("*** ENCARGADO: ");
+        System.out.println("Nombre:" + this.verNombre());
+        System.out.println("Apellido:" + this.verApellido());
+        System.out.println("Correo:" + this.verCorreo());
+        System.out.println("Clave:" + this.verClave());
+    }
 }

@@ -8,30 +8,21 @@ package productos.modelos;
  *
  * @author estudiante
  */
-public class Productos {
+public class Producto {
     //Atributos
-    private String nombre;
     private String estado;
     private int codigo;
     private String descripcion;
     private float precio;
     private String categoria;
+    
 
-    public Productos(String nombre, String estado, int codigo, String descripcion, float precio, String categoria) {
-        this.nombre = nombre;
+    public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.estado = estado;
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
         this.categoria = categoria;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String verEstado() {
@@ -74,5 +65,20 @@ public class Productos {
         this.categoria = categoria;
     }
     
-   
+    
+    public void mostrar(){
+        System.err.println("*** PRODUCTO: ");
+        System.out.println("Estado: " + this.verEstado());
+        System.out.println("Descripcion: " + this.verDescripcion());
+        System.out.println("Codigo: " + this.verCodigo());
+        System.out.println("Categoria: " + this.verCategoria());
+        System.out.println("Precio: $" + this.verPrecio());
+    }
+
+    
+    @Override
+    public String toString() {
+        return "Producto{" + "estado=" + estado + ", codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", categoria=" + categoria + '}';
+    }
+    
 }

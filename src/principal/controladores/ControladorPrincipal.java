@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import usuarios.modelos.Clientes;
 import usuarios.modelos.Empleados;
 import usuarios.modelos.Encargados;
-import productos.modelos.Productos;
+import productos.modelos.Producto;
 
 /**
  *
@@ -21,7 +21,7 @@ public class ControladorPrincipal {
         ArrayList<Clientes> clientes = new ArrayList<>();
         ArrayList<Empleados> empleados = new ArrayList<>();
         ArrayList<Encargados> encargados = new ArrayList<>();
-        ArrayList<Productos> productos = new ArrayList<>();
+        ArrayList<Producto> productos = new ArrayList<>();
 
         Clientes cliente1 = new Clientes("c1@mail.com", "c1", "c1", "c1");
         Clientes cliente2 = new Clientes("c2@mail.com", "c2", "c2", "c2");
@@ -35,88 +35,11 @@ public class ControladorPrincipal {
         Encargados encargado2 = new Encargados("c2@mail.com", "c2", "c2", "c2");
         Encargados encargado3 = new Encargados("c3@mail.com", "c3", "c3", "c3");
 
-        Productos producto1 = new Productos("p1", "disponible", 1, "p1", 1.2f, "p1");
-        Productos producto2 = new Productos("p2", "disponible", 2, "p2", 1.2f, "p2");
-        Productos producto3 = new Productos("p3", "disponible", 3, "p3", 1.2f, "p3");
+        Producto producto1 = new Producto(1, "disponible", "p1", "p1", 1.2f);
+        Producto producto2 = new Producto(2, "disponible", "p2", "p2", 1.2f);
+        Producto producto3 = new Producto(3, "disponible", "p3", "p3", 1.2f);
 
-        //Asigno valores
-//        cliente1.verNombre() = "c1";
-//        cliente2.verNombre() = "c2";
-//        cliente3.verNombre() = "c3";
-//
-//        cliente1.verApellido() = "c1";
-//        cliente2.verApellido() = "c1";
-//        cliente3.verApellido() = "c1";
-//
-//        cliente1.verCorreo() = "c1@mail.com";
-//        encargado1.verClave() = "c1";
-//        encargado2.verClave() = "c2";
-//        encargado3.verClave() = "c3";
-//        //
-//        cliente2.verCorreo() = "c2@mail.com";
-//        cliente3.verCorreo() = "c3@mail.com";
-//
-//        cliente1.verClave() = "c1";
-//        cliente2.verClave() = "c2";
-//        cliente3.verClave() = "c3";
-//
-//        empleado1.verNombre() = "c1";
-//        empleado2.verNombre() = "c2";
-//        empleado3.verNombre() = "c3";
-//
-//        empleado1.verApellido() = "c1";
-//        empleado2.verApellido() = "c1";
-//        empleado3.verApellido() = "c1";
-//
-//        empleado1.verCorreo() = "c1@mail.com";
-//        empleado2.verCorreo() = "c2@mail.com";
-//        empleado3.verCorreo() = "c3@mail.com";
-//
-//        empleado1.verClave() = "c1";
-//        empleado2.verClave() = "c2";
-//        empleado3.verClave() = "c3";
-//
-//        encargado1.verNombre() = "c1";
-//        encargado2.verNombre() = "c2";
-//        encargado3.verNombre() = "c3";
-//
-//        encargado1.verApellido() = "c1";
-//        encargado2.verApellido() = "c1";
-//        encargado3.verApellido() = "c1";
-//
-//        encargado1.verCorreo() = "c1@mail.com";
-//        encargado2.verCorreo() = "c2@mail.com";
-//        encargado3.verCorreo() = "c3@mail.com";
-//
-//        encargado1.verClave() = "c1";
-//        encargado2.verClave() = "c2";
-//        encargado3.verClave() = "c3";
-//
-//        producto1.verNombre() = "p1";
-//        producto2.verNombre() = "p1";
-//        producto3.verNombre() = "p1";
-//
-//        producto1.verCategoria() = "p1";
-//        producto2.verCategoria() = "p1";
-//        producto3.verCategoria() = "p1";
-//
-//        producto1.verDescripcion() = "p1";
-//        producto2.verDescripcion() = "p1";
-//        producto3.verDescripcion() = "p1";
-//
-//        producto1.verPrecio() = 1.2f;
-//        producto2.verPrecio() = 1.2f;
-//        producto3.verPrecio() = 1.2f;
-//
-//        producto1.verEstado() = "disponible";
-//        producto2.verEstado() = "disponible";
-//        producto3.verEstado() = "disponible";
-//
-//        producto1.codigo = 1;
-//        producto2.codigo = 2;
-//        producto3.codigo = 3;  
         
-
         //Agregado de objetos a los ArrayLists
         clientes.add(cliente1);
         clientes.add(cliente2);
@@ -133,43 +56,22 @@ public class ControladorPrincipal {
         productos.add(producto1);
         productos.add(producto2);
         productos.add(producto3);
-
-        for (Clientes unCliente : clientes) {
-
-            System.out.println(unCliente.verNombre());
-            System.out.println(unCliente.verApellido());
-            System.out.println(unCliente.verCorreo());
-            System.out.println(unCliente.verClave());
-            
+        
+        
+        for (Producto p : productos) {
+            p.mostrar();
         }
-
-        for (Empleados unEmpleado : empleados) {
-
-            System.out.println(unEmpleado.verNombre());
-            System.out.println(unEmpleado.verApellido());
-            System.out.println(unEmpleado.verCorreo());
-            System.out.println(unEmpleado.verClave());
-
+        
+        for (Clientes c : clientes) {
+            c.mostrar();
         }
-
-        for (Encargados unEncargado : encargados) {
-
-            System.out.println(unEncargado.verNombre());
-            System.out.println(unEncargado.verApellido());
-            System.out.println(unEncargado.verCorreo());
-            System.out.println(unEncargado.verClave());
-
+        
+        for (Empleados e : empleados) {
+            e.mostrar();
         }
-
-        for (Productos unProducto : productos) {
-
-            System.out.println(unProducto.verNombre());
-            System.out.println(unProducto.verEstado());
-            System.out.println(unProducto.verDescripcion());
-            System.out.println(unProducto.verCodigo());
-            System.out.println(unProducto.verCategoria());
-            System.out.println(unProducto.verPrecio());
+        
+        for (Encargados e2 : encargados) {
+            e2.mostrar();
         }
-
     }
 }
