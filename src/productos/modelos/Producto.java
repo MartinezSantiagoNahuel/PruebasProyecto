@@ -16,7 +16,9 @@ public class Producto {
     private float precio;
     private String categoria;
     
-    Categoria entrada = Categoria.ENTRADA;
+//    Categoria entrada = Categoria.ENTRADA;
+//    Categoria plato_principal = Categoria.PLATO_PRINCIPAL;
+//    Categoria 
     
     public Producto(int codigo, String descripcion, String categoria, String estado, float precio) {
         this.estado = estado;

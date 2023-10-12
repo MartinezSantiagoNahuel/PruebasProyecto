@@ -9,5 +9,10 @@ package productos.modelos;
  * @author marti
  */
 public enum Estado {
+    DISPONIBLE, NO_DISPONIBLE;
     
+    @Override    
+    public String toString() {
+        return "Estado{" + '}';
+    }
 }
