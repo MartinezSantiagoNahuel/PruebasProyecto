@@ -6,7 +6,7 @@ package productos.modelos;
 
 /**
  *
- * @author estudiante
+ * @author Ana Kuenneth
  */
 public class Producto {
     //Atributos

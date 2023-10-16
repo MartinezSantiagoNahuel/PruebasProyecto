@@ -4,13 +4,16 @@
  */
 package principal.controladores;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import productos.modelos.Categoria;
-import productos.modelos.Estado;
+import pedidos.modelos.Pedido;
+//import pedidos.modelos.Estado;
 import usuarios.modelos.Clientes;
 import usuarios.modelos.Empleados;
 import usuarios.modelos.Encargados;
 import productos.modelos.Producto;
+import productos.modelos.Categoria;
+import productos.modelos.Estado;
 
 /**
  *
@@ -40,10 +43,8 @@ public class ControladorPrincipal {
         Producto producto1 = new Producto(1, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
         Producto producto2 = new Producto(2, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
         Producto producto3 = new Producto(3, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
-//        System.out.print(producto1);
-//        System.out.print(producto2);
-//        System.out.print(producto3);
 
+//        Pedido pedido = new Pedido(2, LocalDateTime.now(), Estado.CREADO);
         
         //Agregado de objetos a los ArrayLists
         clientes.add(cliente1);
@@ -78,5 +79,7 @@ public class ControladorPrincipal {
         for (Encargados e2 : encargados) {
             e2.mostrar();
         }
+        
+        
     }
 }
