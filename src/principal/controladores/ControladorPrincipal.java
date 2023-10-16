@@ -38,9 +38,11 @@ public class ControladorPrincipal {
         Encargados encargado3 = new Encargados("c3@mail.com", "c3", "c3", "c3");
 
         Producto producto1 = new Producto(1, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
-//        Producto producto2 = new Producto(2, "disponible", "p2", "p2", 1.2f);
-//        Producto producto3 = new Producto(3, "disponible", "p3", "p3", 1.2f);
-            System.out.print(producto1);
+        Producto producto2 = new Producto(2, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
+        Producto producto3 = new Producto(3, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
+//        System.out.print(producto1);
+//        System.out.print(producto2);
+//        System.out.print(producto3);
 
         
         //Agregado de objetos a los ArrayLists
@@ -57,8 +59,8 @@ public class ControladorPrincipal {
         encargados.add(encargado2);
 
         productos.add(producto1);
-//        productos.add(producto2);
-//        productos.add(producto3);
+        productos.add(producto2);
+        productos.add(producto3);
         
         
         for (Producto p : productos) {

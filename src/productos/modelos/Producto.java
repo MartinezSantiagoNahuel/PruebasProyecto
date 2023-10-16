@@ -66,7 +66,7 @@ public class Producto {
     
     
     public void mostrar(){
-        System.err.println("*** PRODUCTO: ");
+        System.out.println("*** PRODUCTO: ");
         System.out.println("Estado: " + this.verEstado());
         System.out.println("Descripcion: " + this.verDescripcion());
         System.out.println("Codigo: " + this.verCodigo());

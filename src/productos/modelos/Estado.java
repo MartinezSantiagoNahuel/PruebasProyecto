@@ -9,10 +9,17 @@ package productos.modelos;
  * @author marti
  */
 public enum Estado {
-    DISPONIBLE, NO_DISPONIBLE;
+    DISPONIBLE("Disponible"), NO_DISPONIBLE("No Disponible");
+    
+    private String value;
+    
+    private Estado(String value){
+        this.value=value;
+    }
+    
     
     @Override    
     public String toString() {
-        return "Estado{" + '}';
+        return "Estado{" + this.value+ "}" ;
     }
 }
