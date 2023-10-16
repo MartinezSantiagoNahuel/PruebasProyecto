@@ -7,13 +7,13 @@ package principal.controladores;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
-//import pedidos.modelos.Estado;
+import pedidos.modelos.Estado;
 import usuarios.modelos.Clientes;
 import usuarios.modelos.Empleados;
 import usuarios.modelos.Encargados;
 import productos.modelos.Producto;
-import productos.modelos.Categoria;
-import productos.modelos.Estado;
+//import productos.modelos.Categoria;
+//import productos.modelos.Estado;
 
 /**
  *
@@ -39,12 +39,12 @@ public class ControladorPrincipal {
         Encargados encargado1 = new Encargados("c1@mail.com", "c1", "c1", "c1");
         Encargados encargado2 = new Encargados("c2@mail.com", "c2", "c2", "c2");
         Encargados encargado3 = new Encargados("c3@mail.com", "c3", "c3", "c3");
+//
+//        Producto producto1 = new Producto(1, "disponible", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 1.2f);
+//        Producto producto2 = new Producto(2, "disponible", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 1.2f);
+//        Producto producto3 = new Producto(3, "disponible", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 1.2f);
 
-        Producto producto1 = new Producto(1, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
-        Producto producto2 = new Producto(2, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
-        Producto producto3 = new Producto(3, "disponible", Categoria.ENTRADA, Estado.DISPONIBLE, 1.2f);
-
-//        Pedido pedido = new Pedido(2, LocalDateTime.now(), Estado.CREADO);
+        Pedido unPedido = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
         
         //Agregado de objetos a los ArrayLists
         clientes.add(cliente1);
@@ -58,10 +58,10 @@ public class ControladorPrincipal {
         encargados.add(encargado1);
         encargados.add(encargado2);
         encargados.add(encargado2);
-
-        productos.add(producto1);
-        productos.add(producto2);
-        productos.add(producto3);
+//
+//        productos.add(producto1);
+//        productos.add(producto2);
+//        productos.add(producto3);
         
         
         for (Producto p : productos) {
@@ -80,6 +80,7 @@ public class ControladorPrincipal {
             e2.mostrar();
         }
         
+        unPedido.mostrar();
         
     }
 }
