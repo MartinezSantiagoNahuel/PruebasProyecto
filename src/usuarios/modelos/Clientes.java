@@ -19,6 +19,7 @@ public class Clientes{
     private String nombre;
     ArrayList<Pedido> pedidos = new ArrayList<>();
 
+    
     //Constructor
     /**
      * Constructor
@@ -65,9 +66,11 @@ public class Clientes{
     }
     
     //Métodos
+    
     /**
      * Muestra los atributos del objeto Cliente creado
      */
+    
     public void mostrar(){
         System.out.println("*** CLIENTE: ");
         System.out.println("Apellido:" + this.verApellido());
