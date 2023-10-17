@@ -20,6 +20,13 @@ public class Clientes{
     ArrayList<Pedido> pedidos = new ArrayList<>();
 
     //Constructor
+    /**
+     * Constructor
+     * @param correo Correo electrónico del cliente
+     * @param clave Contraseña de ingreso del cliente
+     * @param apellido Apellido cliente
+     * @param nombre Nombre Cliente
+     */
     public Clientes(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
         this.clave = clave;
@@ -32,7 +39,6 @@ public class Clientes{
     public String verCorreo() {
         return correo;
     }
-
     public void asignarCorreo(String correo) {
         this.correo = correo;
     }
@@ -40,15 +46,13 @@ public class Clientes{
     public String verClave() {
         return clave;
     }
-
     public void asignarClave(String clave) {
         this.clave = clave;
     }
-
+    
     public String verApellido() {
         return apellido;
     }
-
     public void asignarApellido(String apellido) {
         this.apellido = apellido;
     }
@@ -56,15 +60,18 @@ public class Clientes{
     public String verNombre() {
         return nombre;
     }
-
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }
     
+    //Métodos
+    /**
+     * Muestra los atributos del objeto Cliente creado
+     */
     public void mostrar(){
         System.out.println("*** CLIENTE: ");
-        System.out.println("Nombre:" + this.verNombre());
         System.out.println("Apellido:" + this.verApellido());
+        System.out.println("Nombre:" + this.verNombre());
         System.out.println("Correo:" + this.verCorreo());
         System.out.println("Clave:" + this.verClave());
     }

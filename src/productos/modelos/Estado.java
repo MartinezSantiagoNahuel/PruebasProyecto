@@ -9,18 +9,28 @@ package productos.modelos;
  * @author marti
  */
 public enum Estado {
-    //Atributos
     DISPONIBLE("Disponible"), NO_DISPONIBLE("No Disponible");
+    
+    /**
+     * Guarda el valor de la enumeración elegida
+     */
     private String value;
     
-    //Constructor
+    /**
+     * Constructor
+     * @param value value
+     */
     private Estado(String value){
         this.value=value;
     }
     
     ///Métodos
+    /**
+     * Muestra la instancia en forma de String, en este caso el valor elegido
+     * @return value
+     */
     @Override    
     public String toString() {
-        return "Estado{" + this.value+ "}" ;
+        return this.value ;
     }
 }

@@ -11,15 +11,26 @@ package productos.modelos;
 public enum Categoria {
     ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato principal"), POSTRE("Postre");
     
+    /**
+     * Muestra el valor de la enumeración elegida
+     */
     private String value;
     
+    /**
+     * Constructor
+     * @param value value
+     */
     private Categoria(String value){
         this.value=value;
     }
     
+    /**
+     * Muestra la instancia en forma de String, en este caso el valor elegido
+     * @return value
+     */
     @Override    
     public String toString() {
-        return "Categoria{"+ this.value+ "}" ;
+        return this.value;
     }
     
 }

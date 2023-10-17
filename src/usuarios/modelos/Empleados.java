@@ -15,6 +15,14 @@ public class Empleados{
     private String apellido;
     private String nombre;
 
+    /**
+     * Constructor
+     * Instancia objetos del tipo Empleados
+     * @param correo Correo electrónico del empleado
+     * @param clave Contraseña del empleado
+     * @param apellido Apellido del empleado
+     * @param nombre Nombre del empleado
+     */
     public Empleados(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
         this.clave = clave;
@@ -56,9 +64,9 @@ public class Empleados{
     
     public void mostrar(){
         System.out.println("*** EMPLEADO: ");
-        System.out.println("Nombre:" + this.verNombre());
-        System.out.println("Apellido:" + this.verApellido());
-        System.out.println("Correo:" + this.verCorreo());
-        System.out.println("Clave:" + this.verClave());
+        System.out.println("Nombre: " + this.verNombre());
+        System.out.println("Apellido: " + this.verApellido());
+        System.out.println("Correo: " + this.verCorreo());
+        System.out.println("Clave: " + this.verClave());
     }
 }
