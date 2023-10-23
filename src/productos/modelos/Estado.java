@@ -5,7 +5,7 @@
 package productos.modelos;
 
 /**
- *
+ * Determina la condición de un producto
  * @author marti
  */
 public enum Estado {

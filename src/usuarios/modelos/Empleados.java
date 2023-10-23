@@ -5,7 +5,7 @@
 package usuarios.modelos;
 
 /**
- *
+ * Atributos y comportamientos de los objetos creados como empleados
  * @author estudiante
  */
 public class Empleados{

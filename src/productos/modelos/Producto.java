@@ -5,7 +5,7 @@
 package productos.modelos;
 
 /**
- *
+ * Atributos y comportamientos de los objetos creados como productos
  * @author Ana Kuenneth
  */
 public class Producto {

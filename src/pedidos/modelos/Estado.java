@@ -5,7 +5,7 @@
 package pedidos.modelos;
 
 /**
- *
+ * Determina la condición de un pedido
  * @author Ana Kuenneth
  */
 public enum Estado {

@@ -5,7 +5,7 @@
 package productos.modelos;
 
 /**
- *
+ * Establece el tipo de un producto del restaurante
  * @author marti
  */
 public enum Categoria {

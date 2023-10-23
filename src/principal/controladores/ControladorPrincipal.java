@@ -16,7 +16,7 @@ import productos.modelos.Categoria;
 //import productos.modelos.Estado;
 
 /**
- *
+ *  Clase que contiene al método principal del proyecto
  * @author estudiante
  */
 public class ControladorPrincipal {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import pedidos.modelos.Pedido;
 
 /**
- *
+ * Atributos y comportamientos de los objetos creados como clientes
  * @author estudiante
  */
 public class Clientes{
@@ -70,7 +70,6 @@ public class Clientes{
     /**
      * Muestra los atributos del objeto Cliente creado
      */
-    
     public void mostrar(){
         System.out.println("*** CLIENTE: ");
         System.out.println("Apellido:" + this.verApellido());

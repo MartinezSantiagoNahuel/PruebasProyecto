@@ -5,7 +5,7 @@
 package usuarios.modelos;
 
 /**
- *
+ * Atributos y comportamientos de los objetos creados como encargados
  * @author estudiante
  */
 public class Encargados {

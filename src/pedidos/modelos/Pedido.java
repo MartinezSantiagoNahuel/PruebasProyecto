@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import usuarios.modelos.Clientes;
 
 /**
- *
+ * Atributos y comportamientos de los objetos creados como pedidos
  * @author Ana Kuenneth
  */
 public class Pedido {
