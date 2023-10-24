@@ -8,12 +8,12 @@ package usuarios.modelos;
  * Atributos y comportamientos de los objetos creados como empleados
  * @author estudiante
  */
-public class Empleado{
+public class Empleado extends Usuario{
    //Atributos
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
+//    private String correo;
+//    private String clave;
+//    private String apellido;
+//    private String nombre;
 
     /**
      * Constructor
@@ -24,48 +24,22 @@ public class Empleado{
      * @param nombre Nombre del empleado
      */
     public Empleado(String correo, String clave, String apellido, String nombre) {
-        this.correo = correo;
-        this.clave = clave;
-        this.apellido = apellido;
-        this.nombre = nombre;
-    }
+        super(correo, clave, apellido, nombre);
 
-    public String verCorreo() {
-        return correo;
-    }
-
-    public void asignarCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String verClave() {
-        return clave;
-    }
-
-    public void asignarClave(String clave) {
-        this.clave = clave;
-    }
-
-    public String verApellido() {
-        return apellido;
-    }
-
-    public void asignarApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String verNombre() {
-        return nombre;
-    }
-
-    public void asignarNombre(String nombre) {
-        this.nombre = nombre;
     }
     
     public void mostrar(){
-        //System.out.println("*** EMPLEADO: ");
-        System.out.println("Empleado:" + this.verApellido()+ " " +this.verNombre());
-        System.out.println("Correo:" + this.verCorreo());
-        //System.out.println("Clave: " + this.verClave());
+        System.out.print("EMPLEADO: ");
+        super.mostrar();
+    }
+    
+    @Override
+    public int hashCode() {
+        return super.hashCode(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 }
