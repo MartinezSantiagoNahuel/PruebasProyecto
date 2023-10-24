@@ -114,12 +114,13 @@ public class Producto {
      * Muestra los atributos del producto creado
      */
     public void mostrar(){
-        System.out.println("*** PRODUCTO: ");
-        System.out.println("Estado: " + this.verEstado());
-        System.out.println("Descripcion: " + this.verDescripcion());
-        System.out.println("Codigo: " + this.verCodigo());
-        System.out.println("Categoria: " + this.verCategoria());
-        System.out.println("Precio: $" + this.verPrecio());
+        //System.out.println("*** PRODUCTO: ");
+        System.out.println("Producto: " + this.verDescripcion());
+        System.out.println("Precio:" + this.verPrecio());
+//        System.out.println("Codigo: " + this.verCodigo());
+        System.out.print("Categoria:" + this.verCategoria());
+        System.out.println(" Vigente:" + this.verEstado());
+        
     }
 
     /**
@@ -128,7 +129,7 @@ public class Producto {
      */
     @Override
     public String toString() {
-        return "Producto{" + "estado=" + estado + ", codigo=" + codigo + ", descripcion=" + descripcion + ", precio=" + precio + ", categoria=" + categoria + '}';
+        return descripcion;
     }
     
 }

@@ -11,7 +11,7 @@ import pedidos.modelos.Pedido;
  * Atributos y comportamientos de los objetos creados como clientes
  * @author estudiante
  */
-public class Clientes{
+public class Cliente{
     //Atributos
     private String correo;
     private String clave;
@@ -28,7 +28,7 @@ public class Clientes{
      * @param apellido Apellido cliente
      * @param nombre Nombre Cliente
      */
-    public Clientes(String correo, String clave, String apellido, String nombre) {
+    public Cliente(String correo, String clave, String apellido, String nombre) {
         this.correo = correo;
         this.clave = clave;
         this.apellido = apellido;
@@ -103,10 +103,11 @@ public class Clientes{
      * Muestra los atributos del objeto Cliente creado
      */
     public void mostrar(){
-        System.out.println("*** CLIENTE: ");
-        System.out.println("Apellido:" + this.verApellido());
-        System.out.println("Nombre:" + this.verNombre());
+        //System.out.println("*** CLIENTE: ");
+//        System.out.println("Apellido:" + this.verApellido());
+//        System.out.println("Nombre:" + this.verNombre());
+        System.out.println("Cliente:" + this.verApellido()+ " " +this.verNombre());
         System.out.println("Correo:" + this.verCorreo());
-        System.out.println("Clave:" + this.verClave());
+//        System.out.println("Clave:" + this.verClave());
     }
 }

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import usuarios.modelos.Clientes;
+import usuarios.modelos.Cliente;
 
 /**
  * Atributos y comportamientos de los objetos creados como pedidos
@@ -20,7 +20,7 @@ public class Pedido {
     private int numero;
     public Estado estado;
     private LocalDateTime fechaYhora;
-    private Clientes unCliente;
+    private Cliente unCliente;
     private ArrayList<ProductoDelPedido> pdp = new ArrayList<>();
     
     /**
@@ -31,7 +31,7 @@ public class Pedido {
      * @param unCliente Cliente que realiza el pedido
      * @param pdp Lista de productos que forman parte del pedido
      */
-    public Pedido(int numero, LocalDateTime fechaYhora, ArrayList<ProductoDelPedido> pdp, Clientes unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYhora, ArrayList<ProductoDelPedido> pdp, Cliente unCliente) {
         this.numero = numero;
 //        this.estado = estado.CREADO;
         this.fechaYhora = fechaYhora;
@@ -82,14 +82,14 @@ public class Pedido {
      * Devuelve el cliente que hizo el pedido
      * @return un cliente
      */
-    public Clientes verUnCliente() {
+    public Cliente verUnCliente() {
         return unCliente;
     }
     /**
      * Asigna el cliente del pedido
      * @param unCliente cliente del pedido
      */
-    public void asignarUnCliente(Clientes unCliente) {
+    public void asignarUnCliente(Cliente unCliente) {
         this.unCliente = unCliente;
     }
     
@@ -131,7 +131,7 @@ public class Pedido {
         String patronFecha = "dd/MM/yyyy";
         String patronHora = "HH:mm";
     
-        System.out.println("*** PEDIDO: ");
+        //System.out.println("*** PEDIDO: ");
         System.out.println("Nro: " + this.verNumero());
         System.out.print("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern(patronFecha)));
         System.out.println("\tHora: "+this.verHora().format(DateTimeFormatter.ofPattern(patronHora)));
