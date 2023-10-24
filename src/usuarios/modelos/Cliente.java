@@ -5,7 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
-import pedidos.modelos.Pedido;
+import pedido.modelos.Pedido;
 
 /**
  * Atributos y comportamientos de los objetos creados como clientes

@@ -165,5 +165,4 @@ public class Producto {
         final Producto other = (Producto) obj;
         return this.codigo == other.codigo;
     }
-    
 }

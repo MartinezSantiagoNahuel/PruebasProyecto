@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package pedidos.modelos;
+package pedido.modelos;
 
+import java.util.Objects;
 import productos.modelos.Producto;
 
 /**
@@ -57,6 +58,41 @@ public class ProductoDelPedido {
      */
     public void asignarUnProducto(Producto unProducto) {
         this.unProducto = unProducto;
+    }
+
+    
+    /**
+     * Mètodo hashcode
+     * Establece y devuelve el código hash del objeto a partir de su producto (producto del pedido)
+     * Producto debe ser único para cada objeto del tipo ProductoDelPedido
+     * @return 
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.unProducto);
+        return hash;
+    }
+
+    /**
+     * Método equals
+     * Compara dos objetos del tipo ProductoDelPedido a partir de sus Productos
+     * @param obj
+     * @return 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProductoDelPedido other = (ProductoDelPedido) obj;
+        return Objects.equals(this.unProducto, other.unProducto);
     }
     
     
