@@ -37,14 +37,14 @@ public class Producto {
     //Métodos GET/SET
     /**
      * Devuelve el estado
-     * @return 
+     * @return estado
      */
     public Estado verEstado() {
         return estado;
     }
     /**
      * Asigna el estado al producto
-     * @param estado 
+     * @param estado estado
      */
     public void asignarEstado(Estado estado) {
         this.estado = estado;
@@ -59,7 +59,7 @@ public class Producto {
     }
     /**
      * Asigna el codigo a un producto
-     * @param codigo 
+     * @param codigo codigo
      */
     public void asignarCodigo(int codigo) {
         this.codigo = codigo;
@@ -74,7 +74,7 @@ public class Producto {
     }
     /**
      *Asigna el precio al producto
-     * @param descripcion 
+     * @param descripcion descripcion
      */
     public void asignarDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -89,7 +89,7 @@ public class Producto {
     }
     /**
      * Asigna el precio de un producto
-     * @param precio 
+     * @param precio precio
      */
     public void asignarPrecio(float precio) {
         this.precio = precio;
@@ -104,7 +104,7 @@ public class Producto {
     }
     /**
      * Asigna la categoría al producto
-     * @param categoria 
+     * @param categoria categoria
      */
     public void asignarCategoria(Categoria categoria) {
         this.categoria = categoria;
@@ -130,6 +130,40 @@ public class Producto {
     @Override
     public String toString() {
         return descripcion;
+    }
+
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su codigo (codigo del producto)
+     * Código debe ser único para cada objeto del tipo Producto
+     * @return hash
+     */
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 59 * hash + this.codigo;
+        return hash;
+    }
+
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Producto a partir de sus códigos
+     * @param obj
+     * @return 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producto other = (Producto) obj;
+        return this.codigo == other.codigo;
     }
     
 }

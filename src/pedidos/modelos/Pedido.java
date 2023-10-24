@@ -145,4 +145,38 @@ public class Pedido {
             System.out.print("\t");
         }
     }
+
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su numero (numero del pedido)
+     * Número debe ser único para cada objeto del tipo Pedido
+     * @return hash
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + this.numero;
+        return hash;
+    }
+    
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Pedido a partir de sus números
+     * @param obj
+     * @return 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pedido other = (Pedido) obj;
+        return this.numero == other.numero;
+    }
 }
