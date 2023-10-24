@@ -18,7 +18,7 @@ import usuarios.modelos.Clientes;
 public class Pedido {
     //Atributos de la clase / Variables de instancia
     private int numero;
-    private Estado estado;
+    public Estado estado;
     private LocalDateTime fechaYhora;
     private Clientes unCliente;
     private ArrayList<ProductoDelPedido> pdp = new ArrayList<>();
@@ -26,14 +26,14 @@ public class Pedido {
     /**
      * Constructor
      * Instancia objetos del tipo Pedido
-     * @param numero
-     * @param fechaYhora
-     * @param estado
-     * @param unCliente 
+     * @param numero Número de pedido
+     * @param fechaYhora Fecha y hora del pedido
+     * @param unCliente Cliente que realiza el pedido
+     * @param pdp Lista de productos que forman parte del pedido
      */
-    public Pedido(int numero, Estado estado, LocalDateTime fechaYhora, ArrayList<ProductoDelPedido> pdp, Clientes unCliente) {
+    public Pedido(int numero, LocalDateTime fechaYhora, ArrayList<ProductoDelPedido> pdp, Clientes unCliente) {
         this.numero = numero;
-        this.estado = estado;
+//        this.estado = estado.CREADO;
         this.fechaYhora = fechaYhora;
         this.pdp = pdp;
         this.unCliente = unCliente;
@@ -93,20 +93,20 @@ public class Pedido {
         this.unCliente = unCliente;
     }
     
-    /**
-     * Devuelve el estado del pedido
-     * @return estado del pedido
-     */
-    public Estado verEstado() {
-        return estado;
-    }
-    /**
-     * Asigna el estado del pedido
-     * @param estado estado
-     */
-    public void asignarEstado(Estado estado) {
-        this.estado = estado;
-    }
+//    /**
+//     * Devuelve el estado del pedido
+//     * @return estado del pedido
+//     */
+//    public Estado verEstado() {
+//        return estado;
+//    }
+//    /**
+//     * Asigna el estado del pedido
+//     * @param estado estado
+//     */
+//    public void asignarEstado(Estado estado) {
+//        this.estado = estado;
+//    }
     
     /**
      * Muestra el producto del pedido
@@ -136,7 +136,7 @@ public class Pedido {
         System.out.print("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern(patronFecha)));
         System.out.println("\tHora: "+this.verHora().format(DateTimeFormatter.ofPattern(patronHora)));
         System.out.println("Cliente: "+this.unCliente.verApellido()+", "+this.unCliente.verNombre());
-        System.out.println("Estado: " + this.verEstado());
+        System.out.println("Estado: " + this.estado.CREADO);
         System.out.println("\tPedido\t\tCantidad");
         System.out.println("\t================================");
         System.out.print("\t");
