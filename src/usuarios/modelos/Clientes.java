@@ -37,30 +37,62 @@ public class Clientes{
 
     //Métodos
     //Métodos GET/SET
+    /**
+     * Muestra el correo electrónico del cliente
+     * @return correo
+     */
     public String verCorreo() {
         return correo;
     }
+    /**
+     * Asigna el correo electronico del cliente
+     * @param correo correo
+     */
     public void asignarCorreo(String correo) {
         this.correo = correo;
     }
 
+    /**
+     * Muestra la contraseña del Cliente
+     * @return clave
+     */
     public String verClave() {
         return clave;
     }
+    /**
+     * Asigna la contraseña del cliente
+     * @param clave clave
+     */
     public void asignarClave(String clave) {
         this.clave = clave;
     }
     
+    /**
+     * Muestra el apellido del cliente
+     * @return apellido
+     */
     public String verApellido() {
         return apellido;
     }
+    /**
+     * Asigna el apellido del cliente
+     * @param apellido apellido
+     */
     public void asignarApellido(String apellido) {
         this.apellido = apellido;
     }
 
+    /**
+     * Muestra el nombre del cliente
+     * @return nombre
+     */
     public String verNombre() {
         return nombre;
     }
+    /**
+     * Asigna el nombre del cliente
+     * @param nombre nombre
+     */
     public void asignarNombre(String nombre) {
         this.nombre = nombre;
     }

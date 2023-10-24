@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
 import pedidos.modelos.Estado;
+import pedidos.modelos.ProductoDelPedido;
 import usuarios.modelos.Clientes;
 import usuarios.modelos.Empleados;
 import usuarios.modelos.Encargados;
@@ -27,6 +28,9 @@ public class ControladorPrincipal {
         ArrayList<Empleados> empleados = new ArrayList<>();
         ArrayList<Encargados> encargados = new ArrayList<>();
         ArrayList<Producto> prods = new ArrayList<>();
+        ArrayList<ProductoDelPedido> pdps1 = new ArrayList<>();
+        ArrayList<ProductoDelPedido> pdps2 = new ArrayList<>();
+        ArrayList<ProductoDelPedido> pdps3 = new ArrayList<>();
         ArrayList<Pedido> pedidos = new ArrayList<>();
 
         //Se instancian las clases
@@ -42,14 +46,13 @@ public class ControladorPrincipal {
         Encargados encargado2 = new Encargados("en2@mail.com", "en2", "ApellidoEncargado2", "NombreEncargado2");
         Encargados encargado3 = new Encargados("en3@mail.com", "en3", "ApellidoEncargado3", "NombreEncargado3");
 
-        Producto producto1 = new Producto(1, "Comida1", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 15.2f);                
-        Producto producto2 = new Producto(2, "Comida2", Categoria.PLATO_PRINCIPAL, productos.modelos.Estado.DISPONIBLE, 50.0f);
-        Producto producto3 = new Producto(3, "Comida3", Categoria.POSTRE, productos.modelos.Estado.DISPONIBLE, 20.2f);
+        Producto producto1 = new Producto(1, "Producto1", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 15.2f);                
+        Producto producto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, productos.modelos.Estado.DISPONIBLE, 50.0f);
+        Producto producto3 = new Producto(3, "Producto3", Categoria.POSTRE, productos.modelos.Estado.DISPONIBLE, 20.2f);
 
-        Pedido pedido1 = new Pedido(1, LocalDateTime.now(), Estado.CREADO, cliente1);
-        Pedido pedido2 = new Pedido(2, LocalDateTime.now(), Estado.SOLICITADO, cliente2);
-        Pedido pedido3 = new Pedido(3, LocalDateTime.now(), Estado.PROCESANDO, cliente3);
-        
+        ProductoDelPedido pdp1 = new ProductoDelPedido(producto1, 3);
+        ProductoDelPedido pdp2 = new ProductoDelPedido(producto2, 2);
+        ProductoDelPedido pdp3 = new ProductoDelPedido(producto3, 1);
         
         //Agregado de objetos a los ArrayLists
         clientes.add(cliente1);
@@ -67,6 +70,15 @@ public class ControladorPrincipal {
         prods.add(producto1);
         prods.add(producto2);
         prods.add(producto3);
+        
+        pdps1.add(pdp1);
+        pdps2.add(pdp2);
+        pdps3.add(pdp3);
+        pdps3.add(pdp2);
+        
+        Pedido pedido1 = new Pedido(1, Estado.CREADO, LocalDateTime.now(), pdps1, cliente1);
+        Pedido pedido2 = new Pedido(2, Estado.SOLICITADO, LocalDateTime.now(), pdps2, cliente2);
+        Pedido pedido3 = new Pedido(3, Estado.PROCESANDO, LocalDateTime.now(), pdps3, cliente3);
         
         pedidos.add(pedido1);
         pedidos.add(pedido2);
