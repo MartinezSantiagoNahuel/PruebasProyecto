@@ -7,14 +7,13 @@ package principal.controladores;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pedidos.modelos.Pedido;
-import pedidos.modelos.Estado;
 import pedidos.modelos.ProductoDelPedido;
 import usuarios.modelos.Clientes;
 import usuarios.modelos.Empleados;
 import usuarios.modelos.Encargados;
 import productos.modelos.Producto;
 import productos.modelos.Categoria;
-//import productos.modelos.Estado;
+import productos.modelos.Estado;
 
 /**
  *  Clase que contiene al método principal del proyecto
@@ -46,9 +45,9 @@ public class ControladorPrincipal {
         Encargados encargado2 = new Encargados("en2@mail.com", "en2", "ApellidoEncargado2", "NombreEncargado2");
         Encargados encargado3 = new Encargados("en3@mail.com", "en3", "ApellidoEncargado3", "NombreEncargado3");
 
-        Producto producto1 = new Producto(1, "Producto1", Categoria.ENTRADA, productos.modelos.Estado.DISPONIBLE, 15.2f);                
-        Producto producto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, productos.modelos.Estado.DISPONIBLE, 50.0f);
-        Producto producto3 = new Producto(3, "Producto3", Categoria.POSTRE, productos.modelos.Estado.DISPONIBLE, 20.2f);
+        Producto producto1 = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 15.2f);                
+        Producto producto2 = new Producto(2, "Producto2", Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE, 50.0f);
+        Producto producto3 = new Producto(3, "Producto3", Categoria.POSTRE, Estado.DISPONIBLE, 20.2f);
 
         ProductoDelPedido pdp1 = new ProductoDelPedido(producto1, 3);
         ProductoDelPedido pdp2 = new ProductoDelPedido(producto2, 2);
