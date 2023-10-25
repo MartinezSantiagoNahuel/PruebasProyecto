@@ -63,12 +63,11 @@ public abstract class Usuario {
         System.out.println(this.verApellido()+ " " +this.verNombre());
         System.out.println("Correo:" + this.verCorreo());
     }
-    
-    
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.correo);
+        int hash = 7;
+        hash = 67 * hash + Objects.hashCode(this.correo);
         return hash;
     }
 
@@ -80,8 +79,13 @@ public abstract class Usuario {
         if (obj == null) {
             return false;
         }
-
+        if (getClass().getSuperclass() != obj.getClass().getSuperclass()) {
+            return false;
+        }
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
     }
+    
+    
+    
 }
