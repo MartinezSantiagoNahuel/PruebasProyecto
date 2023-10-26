@@ -4,6 +4,9 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
+import pedido.modelos.Pedido;
+
 /**
  * Atributos y comportamientos de los objetos creados como empleados
  * @author estudiante
@@ -53,5 +56,15 @@ public class Empleado extends Usuario{
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+    
+     /**
+     * Método que devuelve arraylist vacio
+     * @return pedidos
+     */
+    public ArrayList<Pedido> verPedidos() {
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+         
+        return pedidos;
     }
 }

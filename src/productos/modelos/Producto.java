@@ -114,10 +114,8 @@ public class Producto {
      * Muestra los atributos del producto creado
      */
     public void mostrar(){
-        //System.out.println("*** PRODUCTO: ");
         System.out.println("Producto: " + this.verDescripcion());
         System.out.println("Precio:" + this.verPrecio());
-//        System.out.println("Codigo: " + this.verCodigo());
         System.out.print("Categoria:" + this.verCategoria());
         System.out.println(" Vigente:" + this.verEstado());
         

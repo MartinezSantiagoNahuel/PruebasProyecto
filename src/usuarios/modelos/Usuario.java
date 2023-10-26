@@ -4,7 +4,9 @@
  */
 package usuarios.modelos;
 
+import java.util.ArrayList;
 import java.util.Objects;
+import pedido.modelos.Pedido;
 
 /**
  * Atributos y comportamientos de los objetos creados como usuarios
@@ -137,4 +139,8 @@ public abstract class Usuario {
         return Objects.equals(this.correo, other.correo);
     }
     
+    /**
+     * Método abstracto que permite ver un conjunto de pedidos
+     */
+    public abstract ArrayList<Pedido> verPedidos();
 }

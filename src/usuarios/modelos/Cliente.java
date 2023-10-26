@@ -59,4 +59,38 @@ public class Cliente extends Usuario{
     public boolean equals(Object obj) {
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+    
+    /**
+     * Método abstracto implementado
+     * Devuelve una lista de pedidos
+     * @return pedidos
+     */
+    public ArrayList<Pedido> verPedidos() {
+        return this.pedidos;
+    }
+    
+    /**
+     * Agrega el pedido recibido a la lista de pedidos del cliente
+     * Si ya está lo reemplaza. Si no está lo agrega
+     * @param pedido pedido
+     */
+    public void agregarPedido(Pedido pedido){
+        if(!this.pedidos.contains(pedido)){
+            this.pedidos.add(pedido);
+        }
+        else{
+            this.pedidos.remove(pedido);
+            this.pedidos.add(pedido);
+        }
+    }
+    
+    /**
+     * Cancela el pedido del cliente. Lo elimina de la lista
+     * @param pedido pedido
+     */
+    public void cancelarPedido(Pedido pedido){
+        this.pedidos.remove(pedido);
+    }
+    
+    
 }

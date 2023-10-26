@@ -33,7 +33,6 @@ public class Pedido {
      */
     public Pedido(int numero, LocalDateTime fechaYhora, ArrayList<ProductoDelPedido> pdp, Cliente unCliente) {
         this.numero = numero;
-//        this.estado = estado.CREADO;
         this.fechaYhora = fechaYhora;
         this.pdp = pdp;
         this.unCliente = unCliente;
@@ -118,7 +117,6 @@ public class Pedido {
         String patronFecha = "dd/MM/yyyy";
         String patronHora = "HH:mm";
     
-        //System.out.println("*** PEDIDO: ");
         System.out.println("Nro: " + this.verNumero());
         System.out.print("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern(patronFecha)));
         System.out.println("\tHora: "+this.verHora().format(DateTimeFormatter.ofPattern(patronHora)));
