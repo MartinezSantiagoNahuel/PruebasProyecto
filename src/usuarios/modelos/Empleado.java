@@ -9,11 +9,7 @@ package usuarios.modelos;
  * @author estudiante
  */
 public class Empleado extends Usuario{
-   //Atributos
-//    private String correo;
-//    private String clave;
-//    private String apellido;
-//    private String nombre;
+   //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
 
     /**
      * Constructor
@@ -28,16 +24,32 @@ public class Empleado extends Usuario{
 
     }
     
+    //Métodos
+    /**
+     * Muestra los atributos del objeto Empleado creado
+     */
     public void mostrar(){
-        System.out.print("EMPLEADO: ");
+        System.out.print("Empleado: ");
         super.mostrar();
     }
     
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su correos (correo electrónico del Empleado)
+     * Email debe ser único para cada objeto del tipo Empleado
+     * @return hash
+     */
     @Override
     public int hashCode() {
         return super.hashCode(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Empleado a partir de sus correos
+     * @param obj obj
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody

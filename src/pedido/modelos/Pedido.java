@@ -93,20 +93,7 @@ public class Pedido {
         this.unCliente = unCliente;
     }
     
-//    /**
-//     * Devuelve el estado del pedido
-//     * @return estado del pedido
-//     */
-//    public Estado verEstado() {
-//        return estado;
-//    }
-//    /**
-//     * Asigna el estado del pedido
-//     * @param estado estado
-//     */
-//    public void asignarEstado(Estado estado) {
-//        this.estado = estado;
-//    }
+//    Se eliminan los métodos GET/SET de Estado
     
     /**
      * Muestra el producto del pedido
@@ -162,8 +149,8 @@ public class Pedido {
     /**
      * Método equals
      * Compara dos objetos del tipo Pedido a partir de sus números
-     * @param obj
-     * @return 
+     * @param obj obj
+     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {

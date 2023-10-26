@@ -134,7 +134,7 @@ public class Producto {
 
     /**
      * Método hashCode
-     * Establece y devuelve el código hash del objeto a partir de su codigo (codigo del producto)
+     * Establece y devuelve el código hash del objeto a partir de su código (código del producto)
      * Código debe ser único para cada objeto del tipo Producto
      * @return hash
      */
@@ -148,8 +148,8 @@ public class Producto {
     /**
      * Método equals
      * Compara dos objetos del tipo Producto a partir de sus códigos
-     * @param obj
-     * @return 
+     * @param obj obj
+     * @return boolean
      */
     @Override
     public boolean equals(Object obj) {

@@ -12,11 +12,7 @@ import pedido.modelos.Pedido;
  * @author estudiante
  */
 public class Cliente extends Usuario{
-    //Atributos
-//    private String correo;
-//    private String clave;
-//    private String apellido;
-//    private String nombre;
+    //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
     ArrayList<Pedido> pedidos = new ArrayList<>();
 
     
@@ -37,18 +33,28 @@ public class Cliente extends Usuario{
     /**
      * Muestra los atributos del objeto Cliente creado
      */
-    
-    
     public void mostrar() {
         System.out.print("Cliente: ");
         super.mostrar();
     }
     
+    /**
+     * Método hashCode
+     * Establece y devuelve el código hash del objeto a partir de su correos (correo electrónico del cliente)
+     * Email debe ser único para cada objeto del tipo Cliente
+     * @return hash
+     */
     @Override
     public int hashCode() {
         return super.hashCode(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
+    /**
+     * Método equals
+     * Compara dos objetos del tipo Cliente a partir de sus correos
+     * @param obj obj
+     * @return boolean
+     */
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
