@@ -12,11 +12,7 @@ import pedido.modelos.Pedido;
  * @author estudiante
  */
 public class Encargado extends Usuario{
-    //Atributos
-    private String correo;
-    private String clave;
-    private String apellido;
-    private String nombre;
+    //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
 
     /**
      * Constructor

@@ -27,14 +27,13 @@ public class Empleado extends Usuario{
 
     }
     
-    //Métodos
+    //Métodos mostrar heredados 
     /**
      * Muestra los atributos del objeto Empleado creado
      */
-    public void mostrar(){
-        System.out.print("Empleado: ");
-        super.mostrar();
-    }
+    
+    
+    
     
     /**
      * Método hashCode

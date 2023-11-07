@@ -9,7 +9,7 @@ package pedido.modelos;
  * @author Ana Kuenneth
  */
 public enum Estado {
-    CREADO("Creando"), SOLICITADO("Solicitado"), PROCESANDO("Procesando"), ENTREGRADO("Entregado");
+    CREANDO("Creando"), SOLICITADO("Solicitado"), PROCESANDO("Procesando"), ENTREGRADO("Entregado");
     
     /**
      * Guarda el valor de la enumeración elegida

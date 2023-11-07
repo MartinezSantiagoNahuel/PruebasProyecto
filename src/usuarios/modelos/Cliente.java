@@ -29,14 +29,10 @@ public class Cliente extends Usuario{
         super(correo, clave, apellido, nombre);
     }
 
-    //Métodos
+    //Métodos mostrar heredados
     /**
      * Muestra los atributos del objeto Cliente creado
      */
-    public void mostrar() {
-        System.out.print("Cliente: ");
-        super.mostrar();
-    }
     
     /**
      * Método hashCode
@@ -90,7 +86,7 @@ public class Cliente extends Usuario{
      */
     public void cancelarPedido(Pedido pedido){
         this.pedidos.remove(pedido);
+        if (!pedidos.contains(pedido))
+            pedidos.add(pedido);
     }
-    
-    
 }
