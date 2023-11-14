@@ -7,9 +7,6 @@ package principal.controladores;
 
 import javax.swing.UIManager;
 import productos.vistas.VentanaAMProducto;
-import usuarios.vistas.VentanaAMCliente;
-import usuarios.vistas.VentanaAMEmpleado;
-import usuarios.vistas.VentanaAMEncargado;
 
 /**
  *
