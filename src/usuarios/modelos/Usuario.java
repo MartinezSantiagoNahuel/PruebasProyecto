@@ -27,7 +27,7 @@ public abstract class Usuario {
      * @param apellido Apellido del usuario
      * @param nombre Nombre del usuario
      */
-    public Usuario(String correo, String clave, String apellido, String nombre) {
+    public Usuario(String correo, String apellido, String nombre, String clave) {
         this.correo = correo;
         this.clave = clave;
         this.apellido = apellido;

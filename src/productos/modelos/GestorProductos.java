@@ -74,13 +74,12 @@ public class GestorProductos {
         } 
         
         Producto producto = new Producto(codigo, descripcion, categoria, estado, precio);
-        if(productos.contains(producto)){
-            
-            return PRODUCTOS_DUPLICADOS;
+        if(productos.contains(producto)){ 
+            return this.PRODUCTOS_DUPLICADOS;
         }
         else{
             productos.add(producto);
-            return EXITO;
+            return this.EXITO;
         }
         
     } 
@@ -128,7 +127,7 @@ public class GestorProductos {
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosDesc = new ArrayList<>();
         for(Producto p : productos){
-            if(descripcion.equalsIgnoreCase(p.verDescripcion())){
+            if(p.verDescripcion().toLowerCase().contains(descripcion.toLowerCase())){
                 productosDesc.add(p);
             }
         }
@@ -136,9 +135,9 @@ public class GestorProductos {
     }
     
     /**
-     * 
+     * devuelve true si existe el producto especificado, false en caso contrario.
      * @param producto Producto posible del menu
-     * @return True or False, ¿existe este producto?
+     * @return True or False
      */
     public boolean existeEsteProducto(Producto producto){
         for(Producto p : productos){
