@@ -18,7 +18,7 @@ import usuarios.modelos.Cliente;
 public class Pedido {
     //Atributos de la clase / Variables de instancia
     private int numero;
-    public Estado estado;
+    public Estado estado = Estado.CREADO;
     private LocalDateTime fechaYhora;
     private Cliente unCliente;
     private ArrayList<ProductoDelPedido> pdp = new ArrayList<>();

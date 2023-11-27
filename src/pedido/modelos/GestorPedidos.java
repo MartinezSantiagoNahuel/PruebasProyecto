@@ -172,11 +172,11 @@ public class GestorPedidos {
         if (hora == null) {
             return this.ERROR_HORA;
         }
-        if(cliente == null){
-            return this.ERROR_CLIENTE;
-        }
         if (productosDelPedido == null || productosDelPedido.isEmpty()) {
             return this.ERROR_PRODUCTOS_DEL_PEDIDO;
+        }
+        if(cliente == null){
+            return this.ERROR_CLIENTE;
         }
         
         return this.VALIDACION_EXITO;
