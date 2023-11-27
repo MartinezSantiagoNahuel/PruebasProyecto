@@ -64,9 +64,11 @@ public class GestorPedidos {
             LocalDateTime fechaYhora = LocalDateTime.of(fecha, hora);
             int numPedido = this.pedidos.size() + 1;
             Pedido pedido = new Pedido(numPedido, fechaYhora, productosDelPedido, cliente);
-            agregarPedido(pedido);
+            return agregarPedido(pedido);
         }
-        return this.ERROR;
+        else{
+            return validacion;
+        }
     }
     
     /**
@@ -192,6 +194,15 @@ public class GestorPedidos {
         else{
             this.pedidos.add(pedido);
             return this.EXITO;
+        }
+    }
+    
+    /**
+     * Método auxiliar para revisión desde consola
+     */
+    public void mostrarPedidos(){
+        for (Pedido p : this.pedidos){
+            p.mostrar();
         }
     }
 }

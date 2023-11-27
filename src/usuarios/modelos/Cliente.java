@@ -14,10 +14,7 @@ import pedido.modelos.Pedido;
 public class Cliente extends Usuario{
     //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
     ArrayList<Pedido> pedidos = new ArrayList<>();
-
     
-    
-    //Constructor
     /**
      * Constructor
      * @param correo Correo electrónico del cliente
@@ -29,10 +26,9 @@ public class Cliente extends Usuario{
         super(correo, clave, apellido, nombre);
     }
 
-    //Métodos mostrar heredados
-    /**
-     * Muestra los atributos del objeto Cliente creado
-     */
+    //Métodos
+    //Métodos GET/SET heredados
+    //Método mostrar() heredado
     
     /**
      * Método hashCode

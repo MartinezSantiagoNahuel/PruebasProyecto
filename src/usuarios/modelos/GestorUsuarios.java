@@ -61,24 +61,20 @@ public class GestorUsuarios{
             Usuario usuario;
             switch (perfil) {
                 case CLIENTE: 
-                    usuario = new Cliente(correo, clave, apellido, nombre);
-                    agregarUsuario(usuario);
-                    break;
+                    usuario = new Cliente(correo, apellido, nombre, clave);
+                    return agregarUsuario(usuario);
                 case ENCARGADO: 
-                    usuario = new Encargado(correo, clave, apellido, nombre);
-                    agregarUsuario(usuario);
-                    break;
+                    usuario = new Encargado(correo, apellido, nombre, clave);
+                    return agregarUsuario(usuario);
                 case EMPLEADO: 
-                    usuario = new Empleado(correo, clave, apellido, nombre);
-                    agregarUsuario(usuario);
-                    break;
+                    usuario = new Empleado(correo, apellido, nombre, clave);
+                    return agregarUsuario(usuario);
                 default:
                     return this.ERROR;
             }
-            return this.EXITO;
         }
         else{
-            return this.ERROR;
+            return validacion;
         }
     }
     
@@ -146,7 +142,7 @@ public class GestorUsuarios{
      * @return true or false, usuario validado o no
      */
     public String validarUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
-        if (correo == null || correo.isEmpty() || !correo.contains("@") || correo.indexOf("@") != correo.lastIndexOf("@")) {            System.out.println(this.ERROR_CORREO);
+        if (correo == null || correo.isEmpty() || !correo.contains("@") || (correo.indexOf("@") != correo.lastIndexOf("@"))) {
             return this.ERROR_CORREO;
         }
         if (apellido == null || apellido.isEmpty()) {
@@ -180,4 +176,12 @@ public class GestorUsuarios{
         }
     }
 
+    /**
+     * Método auxiliar para revisión desde consola
+     */
+    public void mostrarUsuarios(){
+        for (Usuario u : this.usuarios){
+            u.mostrar();
+        }
+    }
 }

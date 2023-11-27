@@ -57,10 +57,12 @@ public class GestorProductos {
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
         if(validacion.equals(this.VALIDACION_EXITO)){
-            Producto producto = new Producto(codigo, descripcion, categoria, estado, precio);
-            agregarProducto(producto);
+            Producto producto = new Producto(codigo, descripcion, precio, categoria, estado);
+            return agregarProducto(producto);
         }
-        return this.ERROR;
+        else {
+            return validacion;
+        }
     }
     
     /**
@@ -76,7 +78,7 @@ public class GestorProductos {
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if(this.productos.contains(productoAModificar)){
             int posicion = this.productos.indexOf(productoAModificar);
-            Producto productoCambios = new Producto(codigo, descripcion, categoria, estado, precio);  
+            Producto productoCambios = new Producto(codigo, descripcion, precio, categoria, estado);  
            
             String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
             if(validacion.equals(this.VALIDACION_EXITO)){
@@ -84,7 +86,7 @@ public class GestorProductos {
                 return this.EXITO; 
             }
             else{
-                return this.VALIDACION_ERROR;
+                return validacion;
             }   
         }
         return this.PRODUCTO_INEXISTENTE;  
@@ -200,6 +202,15 @@ public class GestorProductos {
         else{
             this.productos.add(producto);
             return this.EXITO;
+        }
+    }
+    
+    /**
+     * Método auxiliar para revisión desde consola
+     */
+    public void mostrarProductos(){
+        for (Producto p : this.productos){
+            p.mostrar();
         }
     }
 }

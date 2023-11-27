@@ -96,9 +96,8 @@ public abstract class Usuario {
         this.nombre = nombre;
     }
     
-    
     /**
-     * Muestra los atributos del objeto Empleado creado
+     * Muestra los atributos del objeto Usuario creado
      */
     public void mostrar(){
         System.out.println(this.verApellido()+ " " +this.verNombre());

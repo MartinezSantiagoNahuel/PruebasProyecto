@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedido.modelos.GestorPedidos;
 import pedido.modelos.Pedido;
 
 /**
@@ -27,19 +28,9 @@ public class Encargado extends Usuario{
     }
 
     //Métodos
-    //Métodos GET/SET
-    
-    
-    /**
-     * Muestra los atributos del objeto creado
-     */
-    
-    public void mostrar(){
-        System.out.print("ENCARGADO: ");
-        super.mostrar();
-    }
-    
-    
+    //Métodos GET/SET heredados
+    //Método mostrar() heredado
+       
     /**
      * Método hashCode
      * Establece y devuelve el código hash del objeto a partir de su correos (correo electrónico del encargado)
@@ -50,7 +41,6 @@ public class Encargado extends Usuario{
     public int hashCode() {
         return super.hashCode(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
     
     /**
      * Método equals
@@ -63,15 +53,14 @@ public class Encargado extends Usuario{
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
-    
-    
     /**
-     * Método que devuelve arraylist vacio
+     * Método que devuelve todos los pedidos creados 
+     * Se utiliza el patrón Singleton
      * @return pedidos
      */
+    @Override
     public ArrayList<Pedido> verPedidos() {
-        ArrayList<Pedido> pedidos = new ArrayList<>();
-         
-        return pedidos;
+        GestorPedidos gp = GestorPedidos.crear();
+        return gp.verPedidos();
     }
 }

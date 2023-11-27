@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import pedido.modelos.GestorPedidos;
 import pedido.modelos.Pedido;
 
 /**
@@ -12,7 +13,7 @@ import pedido.modelos.Pedido;
  * @author estudiante
  */
 public class Empleado extends Usuario{
-   //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
+    //Atributos heredados de la super clase Usuario (correo, clave, apellido, nombre)
 
     /**
      * Constructor
@@ -24,16 +25,11 @@ public class Empleado extends Usuario{
      */
     public Empleado(String correo, String clave, String apellido, String nombre) {
         super(correo, clave, apellido, nombre);
-
     }
     
-    //Métodos mostrar heredados 
-    /**
-     * Muestra los atributos del objeto Empleado creado
-     */
-    
-    
-    
+    //Métodos
+    //Métodos GET/SET heredados
+    //Método mostrar() heredado
     
     /**
      * Método hashCode
@@ -57,13 +53,14 @@ public class Empleado extends Usuario{
         return super.equals(obj); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
-     /**
-     * Método que devuelve arraylist vacio
+    /**
+     * Método que devuelve todos los pedidos creados 
+     * Se utiliza el patrón Singleton
      * @return pedidos
      */
+    @Override
     public ArrayList<Pedido> verPedidos() {
-        ArrayList<Pedido> pedidos = new ArrayList<>();
-         
-        return pedidos;
+        GestorPedidos gp = GestorPedidos.crear();
+        return gp.verPedidos();
     }
 }

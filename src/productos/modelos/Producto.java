@@ -25,7 +25,7 @@ public class Producto {
      * @param estado Estado del producto
      * @param precio Precio producto
      */
-    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
+    public Producto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
         this.estado = estado;
         this.codigo = codigo;
         this.descripcion = descripcion;
