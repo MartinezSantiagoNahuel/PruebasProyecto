@@ -7,7 +7,7 @@ package usuarios.modelos;
 import java.util.ArrayList;
 
 /**
- *
+ * Clase destinada a crear y manejar las instancias Usuario
  * @author martinez
  */
 public class GestorUsuarios{
@@ -28,10 +28,16 @@ public class GestorUsuarios{
     public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
     public static final String ERROR_CONTRASENIA = "La clave es incorrecta";
 
-    
+    /**
+     * Constructor
+     */
     private GestorUsuarios() {
     }
     
+    /**
+     * Mecanismo para que sólo se pueda crear una instancia de GestorUsuarios
+     * @return gestor como única instancia
+     */
     public static GestorUsuarios crear(){
         if(gestor == null){
             gestor = new GestorUsuarios();
@@ -39,9 +45,109 @@ public class GestorUsuarios{
         return gestor;
     }
     
+    /**
+     * Crea un nuevo usuario
+     * @param correo Correo del usuario
+     * @param apellido Apellido del usuario
+     * @param nombre Nombre del usuario
+     * @param perfil Perfil del usuario
+     * @param clave Clave del usuario
+     * @param claveRepetida Clave repetida para verificación
+     * @return Resultado de la operación
+     */
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
-        if (correo == null || correo.isEmpty() || !correo.contains("@") || correo.indexOf("@") != correo.lastIndexOf("@")) {
-         return this.ERROR_CORREO;   
+        String validacion = validarUsuario(correo, apellido, nombre, perfil, clave, claveRepetida);
+        if(validacion.equals(this.VALIDACION_EXITO)){
+            Usuario usuario;
+            switch (perfil) {
+                case CLIENTE: 
+                    usuario = new Cliente(correo, clave, apellido, nombre);
+                    agregarUsuario(usuario);
+                    break;
+                case ENCARGADO: 
+                    usuario = new Encargado(correo, clave, apellido, nombre);
+                    agregarUsuario(usuario);
+                    break;
+                case EMPLEADO: 
+                    usuario = new Empleado(correo, clave, apellido, nombre);
+                    agregarUsuario(usuario);
+                    break;
+                default:
+                    return this.ERROR;
+            }
+            return this.EXITO;
+        }
+        else{
+            return this.ERROR;
+        }
+    }
+    
+    /**
+     * Devuelve todos los usuarios
+     * @return Lista con todos los usuarios
+     */
+    public ArrayList<Usuario> verUsuarios(){ 
+        return this.usuarios;
+    }
+    
+    /**
+     * Busca si existen usuarios con el apellido especificado (total o parcialmente)
+     * @param apellido Apellido del usuario a buscar
+     * @return Lista de usuarios con el apellido ingresado
+     */
+    public ArrayList<Usuario> buscarUsuarios(String apellido){
+        ArrayList<Usuario> usuariosAp = new ArrayList<>();
+        for(Usuario u : this.usuarios){
+            if(u.verApellido().toLowerCase().contains(apellido.toLowerCase())){
+                usuariosAp.add(u);
+            }
+        }
+        return usuariosAp;
+    }
+    
+    /**
+     * Devuelve true si existe el usuario especificado, false en caso contrario.
+     * @param usuario Usuario a buscar
+     * @return true or false, usuario existente o no
+     */
+    public boolean existeEsteUsuario(Usuario usuario){
+        for(Usuario u : this.usuarios){
+            if(u.verCorreo().equals(usuario.verCorreo())){
+                return true;
+            }
+        }
+        return false;
+    } 
+     
+    /**
+     * Obtiene el usuario con el correo especificado
+     * Si no hay un usuario con el correo, devuelve null.
+     * @param correo Correo del usuario
+     * @return El usuario con el correo ingresado
+     */
+    public Usuario obtenerUsuario(String correo){
+        for(Usuario u : this.usuarios){
+            if(u.verCorreo().equals(correo)){
+                return u;
+            }
+        }
+        return null;
+    }    
+
+    //Métodos auxiliares
+    /**
+     * Verifica si un usuario cumple con los requisitos
+     * @param correo Correo del usuario
+     * @param apellido Apellido del usuario
+     * @param nombre Nombre del usuario
+     * @param perfil Perfil del usuario
+     * @param clave Clave del usuario
+     * @param claveRepetida Clave repetida para verificación
+     * @return true or false, usuario validado o no
+     */
+    public String validarUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
+        if (correo == null || correo.isEmpty() || !correo.contains("@") || correo.indexOf("@") != correo.lastIndexOf("@")) {            System.out.println(this.ERROR_CORREO);
+            return this.ERROR_CORREO;
         }
         if (apellido == null || apellido.isEmpty()) {
             return this.ERROR_APELLIDO;
@@ -53,89 +159,23 @@ public class GestorUsuarios{
             return this.ERROR_CONTRASENIA;
         }
         if (claveRepetida == null || claveRepetida.isEmpty() || !claveRepetida.equals(clave)) {
-            return this.ERROR_CONTRASENIA;
-        }
-        Usuario usuario;
-        switch (perfil) {
-            case CLIENTE: 
-                usuario  = new Cliente(correo, clave, apellido, nombre);
-                
-                agregarUsuario(usuario);
-                break;
-            case ENCARGADO: 
-                Usuario encargado = new Encargado(correo, clave, apellido, nombre);
-                agregarUsuario(encargado);
-                break;
-            case EMPLEADO: 
-                Usuario empleado = new Empleado(correo, clave, apellido, nombre);
-                agregarUsuario(empleado);
-                break;
-            default:
-                return this.ERROR;
+            return this.ERROR_CLAVES;
         }
         
-        return EXITO;
+        return this.VALIDACION_EXITO;
     }
     
     /**
-     * 
-     * @return 
+     * Agrega un usuario a la lista dependiendo de si ya está agregado o no
+     * @param usuario Un usuario
+     * @return Resultado de la operación
      */
-    public ArrayList<Usuario> verUsuarios(){ 
-        return this.usuarios;
-    }
-    
-    /**
-     * Busca si existen usuarios con el apellido especificado (total o parcialmente)
-     * @param apellido
-     * @return 
-     */
-    public ArrayList<Usuario> buscarUsuarios(String apellido){
-        ArrayList<Usuario> usuariosAp = new ArrayList<>();
-        for(Usuario u : usuarios){
-            if(u.verApellido().toLowerCase().contains(apellido.toLowerCase())){
-                usuariosAp.add(u);
-            }
-        }
-        return usuariosAp;
-    }
-    
-    /**
-     * Devuelve true si existe el usuario especificado, false en caso contrario.
-     * @param usuario
-     * @return 
-     */
-    public boolean existeEsteUsuario(Usuario usuario){
-        for(Usuario u : usuarios){
-            if(u.verCorreo().equals(usuario.verCorreo())){
-                return true;
-            }
-        }
-        return false;
-    } 
-     
-    /**
-     * Obtiene el usuario con el correo especificado. Si no hay un usuario con el correo, devuelve null.
-     * @param correo
-     * @return 
-     */
-    public Usuario obtenerUsuario(String correo){
-        for(Usuario u : usuarios){
-            if(u.verCorreo().equals(correo)){
-                return u;
-            }
-        }
-        return null;
-    }    
-
-    //Metodo auxiliar
     public String agregarUsuario(Usuario usuario){
-        
-        if(usuarios.contains(usuario)){ 
+        if(this.usuarios.contains(usuario)){ 
             return this.USUARIOS_DUPLICADOS;
         }
         else{
-            usuarios.add(usuario);
+            this.usuarios.add(usuario);
             return this.EXITO;
         }
     }

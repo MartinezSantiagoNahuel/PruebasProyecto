@@ -121,7 +121,7 @@ public class Pedido {
         System.out.print("Fecha: " + this.verFecha().format(DateTimeFormatter.ofPattern(patronFecha)));
         System.out.println("\tHora: "+this.verHora().format(DateTimeFormatter.ofPattern(patronHora)));
         System.out.println("Cliente: "+this.unCliente.verApellido()+", "+this.unCliente.verNombre());
-/*Consultar mañana*/  System.out.println("Estado: " +this.estado);
+        System.out.println("Estado: " +this.estado);
         System.out.println("\tPedido\t\tCantidad");
         System.out.println("\t================================");
         System.out.print("\t");

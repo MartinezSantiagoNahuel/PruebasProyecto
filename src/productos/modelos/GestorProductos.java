@@ -7,8 +7,8 @@ package productos.modelos;
 import java.util.ArrayList;
 
 /**
- *
- * @author marti
+ * Clase destinada a crear y manejar las instancias Producto
+ * @author martinez
  */
 public class GestorProductos {
     //Atributos
@@ -17,6 +17,7 @@ public class GestorProductos {
     
     public static final String ERROR_CODIGO = "El código del producto es incorrecto";
     public static final String EXITO = "Producto creado/modificado con éxito";
+    public static final String ERROR = "No se pudo crear/modificar el producto";
     public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
     public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
@@ -26,14 +27,16 @@ public class GestorProductos {
     public static final String VALIDACION_ERROR = "Los datos del producto son incorrectos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
-    //Constructor
+    /**
+     * Constructor
+     */
     private GestorProductos() {
     }
     
     //Métodos
     /**
-     * 
-     * @return 
+     * Mecanismo para que sólo se pueda crear una instancia de GestorProductos.
+     * @return gestor como única instancia
      */
     public static GestorProductos crear(){
         if(gestor == null){
@@ -43,90 +46,66 @@ public class GestorProductos {
     }
     
     /**
-     * 
+     * Crea un nuevo producto
      * @param codigo Código del producto
      * @param descripcion Descripción del producto
      * @param precio Precio del producto
      * @param categoria Categoría del producto
      * @param estado Estado del producto
-     * @return Descripción de la operación
+     * @return Resultado de la operación
      */
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-        
-        if(codigo <= 0){
-            return this.ERROR_CODIGO;
+        String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
+        if(validacion.equals(this.VALIDACION_EXITO)){
+            Producto producto = new Producto(codigo, descripcion, categoria, estado, precio);
+            agregarProducto(producto);
         }
-        
-        if(descripcion == null || descripcion.isEmpty()){
-            return this.ERROR_DESCRIPCION;
-        }
-        
-        if(precio <= 0.0f){
-            return this.ERROR_PRECIO;
-        } 
-        
-        if(categoria == null){
-            return this.ERROR_CATEGORIA;
-        } 
-        
-        if(estado == null){
-            return this.ERROR_ESTADO;
-        } 
-        
-        Producto producto = new Producto(codigo, descripcion, categoria, estado, precio);
-        if(productos.contains(producto)){ 
-            return this.PRODUCTOS_DUPLICADOS;
-        }
-        else{
-            productos.add(producto);
-            return this.EXITO;
-        }
-        
-    } 
+        return this.ERROR;
+    }
     
     /**
-     * 
-     * @param productoAModificar
-     * @param codigo
-     * @param descripcion
-     * @param precio
-     * @param categoria
-     * @param estado
-     * @return 
+     * Modifica un producto
+     * @param productoAModificar Producto que debe ser modificado
+     * @param codigo Nuevo código
+     * @param descripcion Nueva descripción
+     * @param precio Nuevo precio
+     * @param categoria Nueva categoría
+     * @param estado Nuevo estado
+     * @return Resultado de la operación
      */
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-        if(productos.contains(productoAModificar)){
-            int posicion = productos.indexOf(productoAModificar);
+        if(this.productos.contains(productoAModificar)){
+            int posicion = this.productos.indexOf(productoAModificar);
             Producto productoCambios = new Producto(codigo, descripcion, categoria, estado, precio);  
            
-            boolean validacion = validarProducto(productoCambios);
-            if(validacion == true){
-                productos.set(posicion, productoCambios);
-                return EXITO; 
+            String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
+            if(validacion.equals(this.VALIDACION_EXITO)){
+                this.productos.set(posicion, productoCambios);
+                return this.EXITO; 
             }
             else{
-                return VALIDACION_ERROR;
+                return this.VALIDACION_ERROR;
             }   
         }
-        return PRODUCTO_INEXISTENTE;  
+        return this.PRODUCTO_INEXISTENTE;  
     }   
    
     /**
-     * 
-     * @return Productos del Menú del restaurante
+     * Devuelve todos los productos
+     * @return Productos del menú del restaurante
      */
     public ArrayList<Producto> menu(){
         return this.productos;
     }
     
     /**
-     * 
-     * @param descripcion Descripción del producto
+     * Busca si existen productos con la descripción especificada (total o parcialmente).
+     * @param descripcion Descripción del producto a buscar
      * @return Lista de productos con la descripción ingresada
      */
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosDesc = new ArrayList<>();
-        for(Producto p : productos){
+        for(Producto p : this.productos){
             if(p.verDescripcion().toLowerCase().contains(descripcion.toLowerCase())){
                 productosDesc.add(p);
             }
@@ -135,12 +114,12 @@ public class GestorProductos {
     }
     
     /**
-     * devuelve true si existe el producto especificado, false en caso contrario.
+     * Devuelve true si existe el producto especificado, false en caso contrario.
      * @param producto Producto posible del menu
-     * @return True or False
+     * @return True or False, producto existente o no
      */
     public boolean existeEsteProducto(Producto producto){
-        for(Producto p : productos){
+        for(Producto p : this.productos){
             if(p.verCodigo() == producto.verCodigo()){
                 return true;
             }
@@ -149,14 +128,14 @@ public class GestorProductos {
     }
     
     /**
-     * 
-     * @param categoria Una categoría de los productos
+     * Devuelve los productos con la categoría especificada
+     * @param categoria Categoría de productos
      * @return Lista con todos los productos de la categoría ingresada
      */
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosCat = new ArrayList<>();
-        for (Producto p : productos) {
-            if (p.verCategoria() == categoria) {
+        for (Producto p : this.productos) {
+            if (p.verCategoria().equals(categoria)) {
                 productosCat.add(p);
             }
         }   
@@ -164,12 +143,13 @@ public class GestorProductos {
     }
     
     /**
-     * 
+     * Obtiene el producto con el código especificado
+     * Si no hay un producto con el código, devuelve null.
      * @param codigo Código de un producto
      * @return El producto con el código ingresado
      */
     public Producto obtenerProducto(Integer codigo){
-        for(Producto p : productos){
+        for(Producto p : this.productos){
             if(p.verCodigo() == codigo){
                 return p;
             }
@@ -180,35 +160,48 @@ public class GestorProductos {
     
     //Métodos auxiliares
     /**
-     * Verifica si un producto cumple con los requerimientos
-     * @param producto Producto del menu
-     * @return true or false. producto validado o no
+     * Verifica si un producto cumple con los requisitos
+     * @param codigo Código del producto
+     * @param descripcion Descripción del producto
+     * @param precio Precio del producto
+     * @param categoria Categoria del producto
+     * @param estado Estado del producto
+     * @return Resultado de la operación
      */
-    public Boolean validarProducto(Producto producto){
-        if(producto.verCodigo() <= 0){
-            return false;
+    public String validarProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){       
+        if(codigo <= 0){
+            return this.ERROR_CODIGO;
+        }
+        if(descripcion == null || descripcion.isEmpty()){
+            return this.ERROR_DESCRIPCION;
+        }
+        if(precio <= 0.0f){
+            return this.ERROR_PRECIO;
+        }
+        if(categoria == null){
+            return this.ERROR_CATEGORIA;
+        }
+        if(estado == null){
+            return this.ERROR_ESTADO;
         }
         
-        if(producto.verDescripcion() == null || producto.verDescripcion().isEmpty()){
-            return false;
-        }
-        
-        if(producto.verPrecio() <= 0.0f){
-            return false;
-        } 
-        
-        if(producto.verCategoria() == null){
-            return false;
-        } 
-        
-        if(producto.verEstado() == null){
-            return false;
-        }
-        
-        System.out.println(VALIDACION_EXITO);
-        return true;
+        return this.VALIDACION_EXITO;
     }
     
+    /**
+     * Agrega un producto a la lista dependiendo de si ya está agregado o no
+     * @param producto Un producto
+     * @return Resultado de la operación
+     */
+    public String agregarProducto(Producto producto){
+        if(this.productos.contains(producto)){ 
+            return this.PRODUCTOS_DUPLICADOS;
+        }
+        else{
+            this.productos.add(producto);
+            return this.EXITO;
+        }
+    }
 }
 
 
