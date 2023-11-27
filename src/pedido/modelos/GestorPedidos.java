@@ -4,6 +4,7 @@
  */
 package pedido.modelos;
 
+import interfaces.IGestorPedidos;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -15,21 +16,10 @@ import usuarios.modelos.Cliente;
  * Clase destinada a crear y manejar las instancias Pedido
  * @author estudiante
  */
-public class GestorPedidos {
+public class GestorPedidos implements IGestorPedidos{
+    //Atributos
     private static GestorPedidos gestor;
     private ArrayList<Pedido> pedidos = new ArrayList<>();
-    
-    public static final String EXITO = "Pedido creado/modificado/cancelado con éxito";
-    public static final String ERROR = "No se pudo crear/modificar el pedido";
-    public static final String ERROR_FECHA = "La fecha del pedido es incorrecta";
-    public static final String ERROR_HORA = "La hora del pedido es incorrecta";
-    public static final String ERROR_PRODUCTOS_DEL_PEDIDO = "El pedido no tienen productos";
-    public static final String ERROR_CLIENTE = "El pedido no tiene un cliente";
-    public static final String ERROR_ESTADO = "El pedido no tiene un estado";
-    public static final String ERROR_CANCELAR = "No se puede cancelar el pedido en este estado";
-    public static final String PEDIDOS_DUPLICADOS = "Ya existe un pedido con ese número";
-    public static final String PEDIDO_INEXISTENTE = "No existe el pedido especificado";
-    public static final String VALIDACION_EXITO = "El pedido tiene los datos correctos";
     
     /**
      * Constructor
@@ -58,6 +48,7 @@ public class GestorPedidos {
      * @param cliente Cliente que hace el pedido
      * @return Resultado de la operación
      */
+    @Override
     public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String validacion = validarPedido(fecha, hora, productosDelPedido, cliente);
         if(validacion.equals(this.VALIDACION_EXITO)){
@@ -78,6 +69,7 @@ public class GestorPedidos {
      * @param pedidoAModificar Pedido que hay que modificar
      * @return Resultado de la operación
      */
+    @Override
     public String cambiarEstado(Pedido pedidoAModificar){
         if(pedidoAModificar.estado.toString().toLowerCase().equalsIgnoreCase("Creado")){
             pedidoAModificar.estado = Estado.PROCESANDO;
@@ -94,6 +86,7 @@ public class GestorPedidos {
      * Devuelve todos los pedidos
      * @return Lista de todos los pedidos
      */
+    @Override
     public ArrayList<Pedido> verPedidos(){
         return this.pedidos;
     }
@@ -103,6 +96,7 @@ public class GestorPedidos {
      * @param cliente Cliente de un pedido
      * @return true or false
      */
+    @Override
     public boolean hayPedidosConEsteCliente(Cliente cliente){
         for(Pedido p : this.pedidos){
             if(p.verUnCliente().equals(cliente)){
@@ -117,6 +111,7 @@ public class GestorPedidos {
      * @param producto Un producto
      * @return true or false
      */
+    @Override
     public boolean hayPedidosConEsteProducto(Producto producto){
         for (Pedido pedido : this.pedidos){
             for(ProductoDelPedido pdp : pedido.verPdp()){
@@ -133,6 +128,7 @@ public class GestorPedidos {
    * @param pedido Un pedido
    * @return true or false
    */  
+    @Override
     public boolean existeEstePedido(Pedido pedido){
         for(Pedido p : this.pedidos){
             if(p.verNumero() == pedido.verNumero()){
@@ -147,6 +143,7 @@ public class GestorPedidos {
      * @param numero Numero de un pedido
      * @return Pedido con el número especificado
      */
+    @Override
     public Pedido obtenerPedido(Integer numero){
         for(Pedido p : this.pedidos){
             if(p.verNumero() == numero){
@@ -154,6 +151,18 @@ public class GestorPedidos {
             }
         }
         return null;
+    }
+    
+    /**
+     * Cancela un pedido. 
+     * Al cancelar un pedido, el mismo se borra del conjunto de pedidos del cliente (empleando el método 
+     * cancelarPedido() definido en la clase Cliente).
+     * @param pedido Pedido a cancelar
+     * @return Resultado de la operación
+     */
+    @Override
+    public String cancelarPedido(Pedido pedido) {
+        return "";
     }
     
     //Métodos auxiliares

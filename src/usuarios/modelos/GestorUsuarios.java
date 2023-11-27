@@ -4,29 +4,17 @@
  */
 package usuarios.modelos;
 
+import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
 
 /**
  * Clase destinada a crear y manejar las instancias Usuario
  * @author martinez
  */
-public class GestorUsuarios{
+public class GestorUsuarios implements IGestorUsuarios{
+    //Atributos
     private static GestorUsuarios gestor;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
-
-    public static final String EXITO = "Usuario creado/modificado con éxito";
-    public static final String ERROR = "No se pudo crear/modificar el usuario";
-    public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
-    public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
-    public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";
-    public static final String ERROR_CLAVES = "Las claves especificadas no coinciden o son incorrectas";
-    public static final String ERROR_PERFIL = "El perfil del usuario es incorrecto";
-    public static final String PERFIL_CAMBIO = "El usuario no puede cambiarse de perfil";
-    public static final String ERROR_PERMISOS = "No se tienen los permisos para realizar esta funcionalidad";
-    public static final String USUARIOS_DUPLICADOS = "Ya existe un usuario con ese correo";
-    public static final String USUARIO_INEXISTENTE = "No existe el usuario especificado";
-    public static final String VALIDACION_EXITO = "Los datos del usuario son correctos";
-    public static final String ERROR_CONTRASENIA = "La clave es incorrecta";
 
     /**
      * Constructor
@@ -55,6 +43,7 @@ public class GestorUsuarios{
      * @param claveRepetida Clave repetida para verificación
      * @return Resultado de la operación
      */
+    @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         String validacion = validarUsuario(correo, apellido, nombre, perfil, clave, claveRepetida);
         if(validacion.equals(this.VALIDACION_EXITO)){
@@ -82,6 +71,7 @@ public class GestorUsuarios{
      * Devuelve todos los usuarios
      * @return Lista con todos los usuarios
      */
+    @Override
     public ArrayList<Usuario> verUsuarios(){ 
         return this.usuarios;
     }
@@ -91,6 +81,7 @@ public class GestorUsuarios{
      * @param apellido Apellido del usuario a buscar
      * @return Lista de usuarios con el apellido ingresado
      */
+    @Override
     public ArrayList<Usuario> buscarUsuarios(String apellido){
         ArrayList<Usuario> usuariosAp = new ArrayList<>();
         for(Usuario u : this.usuarios){
@@ -106,6 +97,7 @@ public class GestorUsuarios{
      * @param usuario Usuario a buscar
      * @return true or false, usuario existente o no
      */
+    @Override
     public boolean existeEsteUsuario(Usuario usuario){
         for(Usuario u : this.usuarios){
             if(u.verCorreo().equals(usuario.verCorreo())){
@@ -121,6 +113,7 @@ public class GestorUsuarios{
      * @param correo Correo del usuario
      * @return El usuario con el correo ingresado
      */
+    @Override
     public Usuario obtenerUsuario(String correo){
         for(Usuario u : this.usuarios){
             if(u.verCorreo().equals(correo)){
@@ -130,6 +123,16 @@ public class GestorUsuarios{
         return null;
     }    
 
+    /**
+     * Borra un usuario siempre y cuando no haya pedidos con el mismo
+     * @param usuario Usuario a eliminar
+     * @return Resultado de la operación
+     */
+    @Override
+    public String borrarUsuario(Usuario usuario) {
+        return "";
+    }
+    
     //Métodos auxiliares
     /**
      * Verifica si un usuario cumple con los requisitos

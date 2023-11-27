@@ -4,28 +4,17 @@
  */
 package productos.modelos;
 
+import interfaces.IGestorProductos;
 import java.util.ArrayList;
 
 /**
  * Clase destinada a crear y manejar las instancias Producto
  * @author martinez
  */
-public class GestorProductos {
+public class GestorProductos implements IGestorProductos{
     //Atributos
     private static GestorProductos gestor;
     private ArrayList<Producto> productos = new ArrayList<>();
-    
-    public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-    public static final String EXITO = "Producto creado/modificado con éxito";
-    public static final String ERROR = "No se pudo crear/modificar el producto";
-    public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
-    public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
-    public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";
-    public static final String ERROR_ESTADO = "El precio del producto es incorrecto";
-    public static final String PRODUCTOS_DUPLICADOS = "Ya existe un producto con ese código";
-    public static final String VALIDACION_EXITO = "Los datos del producto son correctos";
-    public static final String VALIDACION_ERROR = "Los datos del producto son incorrectos";
-    public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
     /**
      * Constructor
@@ -54,6 +43,7 @@ public class GestorProductos {
      * @param estado Estado del producto
      * @return Resultado de la operación
      */
+    @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
         if(validacion.equals(this.VALIDACION_EXITO)){
@@ -75,6 +65,7 @@ public class GestorProductos {
      * @param estado Nuevo estado
      * @return Resultado de la operación
      */
+    @Override
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         if(this.productos.contains(productoAModificar)){
             int posicion = this.productos.indexOf(productoAModificar);
@@ -96,6 +87,7 @@ public class GestorProductos {
      * Devuelve todos los productos
      * @return Productos del menú del restaurante
      */
+    @Override
     public ArrayList<Producto> menu(){
         return this.productos;
     }
@@ -105,6 +97,7 @@ public class GestorProductos {
      * @param descripcion Descripción del producto a buscar
      * @return Lista de productos con la descripción ingresada
      */
+    @Override
     public ArrayList<Producto> buscarProductos(String descripcion){
         ArrayList<Producto> productosDesc = new ArrayList<>();
         for(Producto p : this.productos){
@@ -120,6 +113,7 @@ public class GestorProductos {
      * @param producto Producto posible del menu
      * @return True or False, producto existente o no
      */
+    @Override
     public boolean existeEsteProducto(Producto producto){
         for(Producto p : this.productos){
             if(p.verCodigo() == producto.verCodigo()){
@@ -134,6 +128,7 @@ public class GestorProductos {
      * @param categoria Categoría de productos
      * @return Lista con todos los productos de la categoría ingresada
      */
+    @Override
     public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
         ArrayList<Producto> productosCat = new ArrayList<>();
         for (Producto p : this.productos) {
@@ -150,6 +145,7 @@ public class GestorProductos {
      * @param codigo Código de un producto
      * @return El producto con el código ingresado
      */
+    @Override
     public Producto obtenerProducto(Integer codigo){
         for(Producto p : this.productos){
             if(p.verCodigo() == codigo){
@@ -159,6 +155,15 @@ public class GestorProductos {
         return null;
     }
     
+    /**
+     * Borra un producto siempre y cuando no haya pedidos con el mismo
+     * @param producto Producto a eliminar
+     * @return Resultado de la operación
+     */
+    @Override
+    public String borrarProducto(Producto producto) {
+        return "";
+    }
     
     //Métodos auxiliares
     /**

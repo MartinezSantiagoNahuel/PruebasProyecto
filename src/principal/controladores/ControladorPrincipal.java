@@ -9,6 +9,9 @@
  */
 package principal.controladores;
 
+import interfaces.IGestorPedidos;
+import interfaces.IGestorProductos;
+import interfaces.IGestorUsuarios;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -34,9 +37,9 @@ import usuarios.modelos.Usuario;
 public class ControladorPrincipal {
     public static void main(String[] args) {
     
-        GestorPedidos gestorPedidos = GestorPedidos.crear();
-        GestorUsuarios gestorUsuarios = GestorUsuarios.crear();
-        GestorProductos gestorProductos = GestorProductos.crear();
+        IGestorPedidos gestorPedidos = GestorPedidos.crear();
+        IGestorUsuarios gestorUsuarios = GestorUsuarios.crear();
+        IGestorProductos gestorProductos = GestorProductos.crear();
         
         //GESTOR USUARIOS****************************************************************
         //Clientes
