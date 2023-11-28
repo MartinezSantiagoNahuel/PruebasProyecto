@@ -14,9 +14,14 @@ import productos.modelos.Producto;
  * @author Ana Kuenneth
  */
 public interface IGestorProductos {
+    public static final String EXITO = "Producto creado con éxito";
+    public static final String EXITO_MODIFICAR = "Producto modificado con éxito";
+    public static final String EXITO_BORRAR = "Producto eliminado con éxito";
+    public static final String ERROR = "No se pudo crear el producto";
+    public static final String ERROR_MODIFICAR = "No se pudo modificar el producto";
+    public static final String ERROR_BORRAR = "No se pudo eliminar el producto";
+    
     public static final String ERROR_CODIGO = "El código del producto es incorrecto";
-    public static final String EXITO = "Producto creado/modificado con éxito";
-    public static final String ERROR = "No se pudo crear/modificar el producto";
     public static final String ERROR_DESCRIPCION = "La descripción del producto es incorrecta";
     public static final String ERROR_PRECIO = "El precio del producto es incorrecto";
     public static final String ERROR_CATEGORIA = "La categoría del producto es incorrecta";

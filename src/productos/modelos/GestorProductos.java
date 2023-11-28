@@ -6,6 +6,8 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import pedido.modelos.GestorPedidos;
+import pedido.modelos.Pedido;
 
 /**
  * Clase destinada a crear y manejar las instancias Producto
@@ -51,7 +53,7 @@ public class GestorProductos implements IGestorProductos{
             return agregarProducto(producto);
         }
         else {
-            return validacion;
+            return validacion + ". " + ERROR;
         }
     }
     
@@ -74,10 +76,10 @@ public class GestorProductos implements IGestorProductos{
             String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
             if(validacion.equals(this.VALIDACION_EXITO)){
                 this.productos.set(posicion, productoCambios);
-                return this.EXITO; 
+                return this.EXITO_MODIFICAR; 
             }
             else{
-                return validacion;
+                return validacion + ". " + ERROR_MODIFICAR;
             }   
         }
         return this.PRODUCTO_INEXISTENTE;  
@@ -162,7 +164,14 @@ public class GestorProductos implements IGestorProductos{
      */
     @Override
     public String borrarProducto(Producto producto) {
-        return "";
+        GestorPedidos gestorPedidos = GestorPedidos.crear();
+        if(gestorPedidos.hayPedidosConEsteProducto(producto)){
+            return ERROR_BORRAR;
+        }
+        else{
+            menu().remove(producto);
+            return EXITO_BORRAR;
+        }
     }
     
     //Métodos auxiliares

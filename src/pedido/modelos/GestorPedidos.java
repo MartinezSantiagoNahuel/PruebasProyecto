@@ -11,6 +11,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
+import usuarios.modelos.GestorUsuarios;
+import usuarios.modelos.Usuario;
 
 /**
  * Clase destinada a crear y manejar las instancias Pedido
@@ -58,7 +60,7 @@ public class GestorPedidos implements IGestorPedidos{
             return agregarPedido(pedido);
         }
         else{
-            return validacion;
+            return validacion + ". " + ERROR;
         }
     }
     
@@ -73,13 +75,13 @@ public class GestorPedidos implements IGestorPedidos{
     public String cambiarEstado(Pedido pedidoAModificar){
         if(pedidoAModificar.estado.toString().toLowerCase().equalsIgnoreCase("Creado")){
             pedidoAModificar.estado = Estado.PROCESANDO;
-            return this.EXITO;
+            return this.EXITO_MODIFICAR;
         }
         if(pedidoAModificar.estado.toString().toLowerCase().equalsIgnoreCase("Procesando")){
             pedidoAModificar.estado = Estado.ENTREGRADO;
-            return this.EXITO;
+            return this.EXITO_MODIFICAR;
         }
-        return this.ERROR_ESTADO;  
+        return this.ERROR_ESTADO + ". " + ERROR_MODIFICAR;  
     }
 
     /**
@@ -162,9 +164,20 @@ public class GestorPedidos implements IGestorPedidos{
      */
     @Override
     public String cancelarPedido(Pedido pedido) {
-        return "";
+        GestorPedidos gestorPedidos = GestorPedidos.crear();
+        GestorUsuarios gestorUsuarios = GestorUsuarios.crear();
+        for(Usuario usuario : gestorUsuarios.verUsuarios()){
+            if(usuario instanceof Cliente){
+                if(usuario.verPedidos().contains(pedido)){
+                    usuario.verPedidos().remove(pedido);
+                    gestorPedidos.verPedidos().remove(pedido);
+                    return EXITO_CANCELAR + ". "+ EXITO_BORRAR;
+                }
+            }
+        }
+        return ERROR_CANCELAR;        
     }
-    
+
     //Métodos auxiliares
     /**
      * Verifica si un pedido cumple con los requisitos

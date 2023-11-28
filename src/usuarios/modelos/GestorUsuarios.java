@@ -4,8 +4,11 @@
  */
 package usuarios.modelos;
 
+import static interfaces.IGestorProductos.ERROR_BORRAR;
+import static interfaces.IGestorProductos.EXITO_BORRAR;
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import pedido.modelos.GestorPedidos;
 
 /**
  * Clase destinada a crear y manejar las instancias Usuario
@@ -130,7 +133,17 @@ public class GestorUsuarios implements IGestorUsuarios{
      */
     @Override
     public String borrarUsuario(Usuario usuario) {
-        return "";
+        GestorPedidos gestorPedidos = GestorPedidos.crear();
+        if(usuario instanceof Cliente){
+            if((gestorPedidos.hayPedidosConEsteCliente((Cliente)usuario)) == true){
+                return ERROR_BORRAR;
+            }
+            else{
+                verUsuarios().remove(usuario);
+                return EXITO_BORRAR;
+            }
+        }
+        return USUARIO_INEXISTENTE + ". " + ERROR_BORRAR;
     }
     
     //Métodos auxiliares

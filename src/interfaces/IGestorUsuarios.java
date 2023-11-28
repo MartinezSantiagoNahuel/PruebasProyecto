@@ -13,8 +13,13 @@ import usuarios.modelos.Usuario;
  * @author Ana Kuenneth
  */
 public interface IGestorUsuarios {
-    public static final String EXITO = "Usuario creado/modificado con éxito";
-    public static final String ERROR = "No se pudo crear/modificar el usuario";
+    public static final String EXITO = "Usuario creado con éxito";
+    public static final String ERROR = "No se pudo crear el usuario";
+    public static final String EXITO_MODIFICAR = "Usuario modificado con éxito";
+    public static final String ERROR_MODIFICAR = "No se pudo modificar el usuario";
+    public static final String EXITO_BORRAR = "Usuario eliminado con éxito";
+    public static final String ERROR_BORRAR = "No se pudo eliminar el usuario"; 
+    
     public static final String ERROR_CORREO = "El correo del usuario es incorrecto";
     public static final String ERROR_APELLIDO = "El apellido del usuario es incorrecto";
     public static final String ERROR_NOMBRE = "El nombre del usuario es incorrecto";

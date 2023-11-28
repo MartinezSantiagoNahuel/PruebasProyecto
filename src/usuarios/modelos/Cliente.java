@@ -22,7 +22,7 @@ public class Cliente extends Usuario{
      * @param apellido Apellido cliente
      * @param nombre Nombre Cliente
      */
-    public Cliente(String correo, String clave, String apellido, String nombre) {
+    public Cliente(String correo, String apellido, String nombre, String clave) {
         super(correo, clave, apellido, nombre);
     }
 
@@ -82,7 +82,8 @@ public class Cliente extends Usuario{
      */
     public void cancelarPedido(Pedido pedido){
         this.pedidos.remove(pedido);
-        if (!pedidos.contains(pedido))
+        if (!pedidos.contains(pedido)){
             pedidos.add(pedido);
+        }
     }
 }
