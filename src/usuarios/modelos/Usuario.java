@@ -137,6 +137,11 @@ public abstract class Usuario {
         final Usuario other = (Usuario) obj;
         return Objects.equals(this.correo, other.correo);
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "correo=" + correo + ", clave=" + clave + ", apellido=" + apellido + ", nombre=" + nombre + '}' + "\n";
+    }
     
     /**
      * Método abstracto que permite ver un conjunto de pedidos
