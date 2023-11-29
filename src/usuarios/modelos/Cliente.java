@@ -23,7 +23,7 @@ public class Cliente extends Usuario{
      * @param nombre Nombre Cliente
      */
     public Cliente(String correo, String apellido, String nombre, String clave) {
-        super(correo, clave, apellido, nombre);
+        super(correo, apellido, nombre, clave);
     }
 
     //Métodos

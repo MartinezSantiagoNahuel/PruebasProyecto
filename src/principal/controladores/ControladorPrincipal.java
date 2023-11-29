@@ -80,8 +80,8 @@ public class ControladorPrincipal {
         System.out.println("==========");
         gestorUsuarios.mostrarUsuarios();
         
-        System.out.println("\nResultado del metodo verUsuarios()");
-        System.out.println(gestorUsuarios.verUsuarios()); //Es necesario un toString() en la clase Usuario?
+//        System.out.println("\nResultado del metodo verUsuarios()");
+//        System.out.println(gestorUsuarios.verUsuarios()); 
         
 //        System.out.println("\nResultado del metodo buscarUsuarios()");
 //        System.out.println(gestorUsuarios.buscarUsuarios("ApellidoCliente1")); //búsqueda estricta

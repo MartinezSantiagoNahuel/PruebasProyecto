@@ -6,6 +6,9 @@ package productos.modelos;
 
 import interfaces.IGestorProductos;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import pedido.modelos.GestorPedidos;
 import pedido.modelos.Pedido;
 
@@ -16,7 +19,7 @@ import pedido.modelos.Pedido;
 public class GestorProductos implements IGestorProductos{
     //Atributos
     private static GestorProductos gestor;
-    private ArrayList<Producto> productos = new ArrayList<>();
+    private List<Producto> productos = new ArrayList<>();
     
     /**
      * Constructor
@@ -48,7 +51,7 @@ public class GestorProductos implements IGestorProductos{
     @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
         String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
-        if(validacion.equals(this.VALIDACION_EXITO)){
+        if(validacion.equals(VALIDACION_EXITO)){
             Producto producto = new Producto(codigo, descripcion, precio, categoria, estado);
             return agregarProducto(producto);
         }
@@ -74,15 +77,15 @@ public class GestorProductos implements IGestorProductos{
             Producto productoCambios = new Producto(codigo, descripcion, precio, categoria, estado);  
            
             String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
-            if(validacion.equals(this.VALIDACION_EXITO)){
+            if(validacion.equals(VALIDACION_EXITO)){
                 this.productos.set(posicion, productoCambios);
-                return this.EXITO_MODIFICAR; 
+                return EXITO_MODIFICAR; 
             }
             else{
                 return validacion + ". " + ERROR_MODIFICAR;
             }   
         }
-        return this.PRODUCTO_INEXISTENTE;  
+        return PRODUCTO_INEXISTENTE;  
     }   
    
     /**
@@ -90,7 +93,8 @@ public class GestorProductos implements IGestorProductos{
      * @return Productos del menú del restaurante
      */
     @Override
-    public ArrayList<Producto> menu(){
+    public List<Producto> menu(){
+        Collections.sort(this.productos);
         return this.productos;
     }
     
@@ -100,13 +104,14 @@ public class GestorProductos implements IGestorProductos{
      * @return Lista de productos con la descripción ingresada
      */
     @Override
-    public ArrayList<Producto> buscarProductos(String descripcion){
-        ArrayList<Producto> productosDesc = new ArrayList<>();
+    public List<Producto> buscarProductos(String descripcion){
+        List<Producto> productosDesc = new ArrayList<>();
         for(Producto p : this.productos){
             if(p.verDescripcion().toLowerCase().contains(descripcion.toLowerCase())){
                 productosDesc.add(p);
             }
         }
+        Collections.sort(productosDesc);
         return productosDesc;
     }
     
@@ -131,13 +136,14 @@ public class GestorProductos implements IGestorProductos{
      * @return Lista con todos los productos de la categoría ingresada
      */
     @Override
-    public ArrayList<Producto> verProductosPorCategoria(Categoria categoria){
-        ArrayList<Producto> productosCat = new ArrayList<>();
+    public List<Producto> verProductosPorCategoria(Categoria categoria){
+        List<Producto> productosCat = new ArrayList<>();
         for (Producto p : this.productos) {
             if (p.verCategoria().equals(categoria)) {
                 productosCat.add(p);
             }
         }   
+        Collections.sort(productosCat);
         return productosCat;
     }
     
@@ -186,22 +192,22 @@ public class GestorProductos implements IGestorProductos{
      */
     public String validarProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){       
         if(codigo <= 0){
-            return this.ERROR_CODIGO;
+            return ERROR_CODIGO;
         }
         if(descripcion == null || descripcion.isEmpty()){
-            return this.ERROR_DESCRIPCION;
+            return ERROR_DESCRIPCION;
         }
         if(precio <= 0.0f){
-            return this.ERROR_PRECIO;
+            return ERROR_PRECIO;
         }
         if(categoria == null){
-            return this.ERROR_CATEGORIA;
+            return ERROR_CATEGORIA;
         }
         if(estado == null){
-            return this.ERROR_ESTADO;
+            return ERROR_ESTADO;
         }
         
-        return this.VALIDACION_EXITO;
+        return VALIDACION_EXITO;
     }
     
     /**
@@ -211,17 +217,18 @@ public class GestorProductos implements IGestorProductos{
      */
     public String agregarProducto(Producto producto){
         if(this.productos.contains(producto)){ 
-            return this.PRODUCTOS_DUPLICADOS;
+            return PRODUCTOS_DUPLICADOS;
         }
         else{
             this.productos.add(producto);
-            return this.EXITO;
+            return EXITO;
         }
     }
     
     /**
      * Método auxiliar para revisión desde consola
      */
+    @Override
     public void mostrarProductos(){
         for (Producto p : this.productos){
             p.mostrar();

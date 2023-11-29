@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import pedido.modelos.GestorPedidos;
 import pedido.modelos.Pedido;
 
@@ -24,7 +25,7 @@ public class Encargado extends Usuario{
      * @param nombre Nombre encargado
      */
     public Encargado(String correo, String clave, String apellido, String nombre) {
-        super(correo, clave, apellido, nombre);
+        super(correo, apellido, nombre, clave);
     }
 
     //Métodos
@@ -59,7 +60,7 @@ public class Encargado extends Usuario{
      * @return pedidos
      */
     @Override
-    public ArrayList<Pedido> verPedidos() {
+    public List<Pedido> verPedidos() {
         GestorPedidos gp = GestorPedidos.crear();
         return gp.verPedidos();
     }

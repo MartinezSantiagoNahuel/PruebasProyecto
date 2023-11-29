@@ -4,11 +4,13 @@
  */
 package productos.modelos;
 
+import java.util.Comparator;
+
 /**
  * Atributos y comportamientos de los objetos creados como productos
  * @author Ana Kuenneth
  */
-public class Producto {
+public class Producto implements Comparable<Producto>{
     //Atributos de la clase
     private Estado estado;
     private int codigo;
@@ -163,4 +165,21 @@ public class Producto {
         final Producto other = (Producto) obj;
         return this.codigo == other.codigo;
     }
+
+    /**
+     * Compara las categorías y las descripciones de los productos por separado
+     * Envía el producto ordenado por categoría y luego por la descripción
+     * @param o Objeto del tipo producto a comparar
+     * @return Resultado de la comparación (-1, 0, 1)
+     */
+    @Override
+    public int compareTo(Producto o) {
+        if(o.categoria.compareTo(this.verCategoria()) == 0){
+            return o.descripcion.compareToIgnoreCase(this.verDescripcion())*(-1);
+        }
+        else{
+            return o.categoria.compareTo(this.verCategoria())*(-1);
+        }
+    }   
+    
 }

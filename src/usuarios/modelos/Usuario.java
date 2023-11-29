@@ -5,6 +5,7 @@
 package usuarios.modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import pedido.modelos.Pedido;
 
@@ -12,12 +13,12 @@ import pedido.modelos.Pedido;
  * Atributos y comportamientos de los objetos creados como usuarios
  * @author estudiante
  */
-public abstract class Usuario {
+public abstract class Usuario implements Comparable<Usuario>{
     //Atributos / Variables de instancia
     private String correo;
-    private String clave;
     private String apellido;
     private String nombre;
+    private String clave;
 
     /**
      * Constructor
@@ -29,9 +30,9 @@ public abstract class Usuario {
      */
     public Usuario(String correo, String apellido, String nombre, String clave) {
         this.correo = correo;
-        this.clave = clave;
         this.apellido = apellido;
         this.nombre = nombre;
+        this.clave = clave;
     }
 
     //Métodos
@@ -140,11 +141,23 @@ public abstract class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "correo=" + correo + ", clave=" + clave + ", apellido=" + apellido + ", nombre=" + nombre + '}' + "\n";
+        return "Usuario{" + "correo=" + this.verCorreo() + ", apellido=" + this.verApellido() + ", nombre=" + this.verNombre() + ", clave=" + this.verClave()  + '}' + "\n" ;
     }
+    
     
     /**
      * Método abstracto que permite ver un conjunto de pedidos
+     * @return Lista de pedidos que realizó el Usuario
      */
-    public abstract ArrayList<Pedido> verPedidos();
+    public abstract List<Pedido> verPedidos();
+    
+    @Override
+    public int compareTo(Usuario o) {
+        if(o.apellido.compareTo(this.verApellido()) == 0){
+            return o.nombre.compareToIgnoreCase(this.verNombre())*(-1);
+        }
+        else{
+            return o.apellido.compareTo(this.verApellido())*(-1);
+        }
+    }   
 }

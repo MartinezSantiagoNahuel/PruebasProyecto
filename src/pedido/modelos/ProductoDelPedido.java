@@ -94,6 +94,12 @@ public class ProductoDelPedido {
         final ProductoDelPedido other = (ProductoDelPedido) obj;
         return Objects.equals(this.unProducto, other.unProducto);
     }
+
+    //Método auxiliar para control por pantalla TP6
+    @Override
+    public String toString() {
+        return "ProductoDelPedido{" + "cantidad=" + cantidad + ", unProducto=" + unProducto + '}' + "\n";
+    }
     
     
 }

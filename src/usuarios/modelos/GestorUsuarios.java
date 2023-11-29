@@ -4,10 +4,11 @@
  */
 package usuarios.modelos;
 
-import static interfaces.IGestorProductos.ERROR_BORRAR;
-import static interfaces.IGestorProductos.EXITO_BORRAR;
 import interfaces.IGestorUsuarios;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import pedido.modelos.GestorPedidos;
 
 /**
@@ -17,7 +18,7 @@ import pedido.modelos.GestorPedidos;
 public class GestorUsuarios implements IGestorUsuarios{
     //Atributos
     private static GestorUsuarios gestor;
-    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private List<Usuario> usuarios = new ArrayList<>();
 
     /**
      * Constructor
@@ -49,7 +50,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     @Override
     public String crearUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         String validacion = validarUsuario(correo, apellido, nombre, perfil, clave, claveRepetida);
-        if(validacion.equals(this.VALIDACION_EXITO)){
+        if(validacion.equals(VALIDACION_EXITO)){
             Usuario usuario;
             switch (perfil) {
                 case CLIENTE: 
@@ -62,7 +63,7 @@ public class GestorUsuarios implements IGestorUsuarios{
                     usuario = new Empleado(correo, apellido, nombre, clave);
                     return agregarUsuario(usuario);
                 default:
-                    return this.ERROR;
+                    return ERROR;
             }
         }
         else{
@@ -75,9 +76,26 @@ public class GestorUsuarios implements IGestorUsuarios{
      * @return Lista con todos los usuarios
      */
     @Override
-    public ArrayList<Usuario> verUsuarios(){ 
+    public List<Usuario> verUsuarios(){ 
+        /* Compara los apellidos y los nombres de los usuarios por separado
+         * Envía el usuario ordenado por apellido y luego por el nombre
+         */
+        Comparator<Usuario> apellidoComp = (apellidoU1, apellidoU2) -> {
+            int comparacion = apellidoU1.verApellido().compareToIgnoreCase(apellidoU2.verApellido());
+            if (comparacion == 0) {
+                comparacion = apellidoU1.verNombre().compareToIgnoreCase(apellidoU2.verNombre());
+            }
+            return comparacion;
+        };
+        
+        Collections.sort(this.usuarios, apellidoComp); 
         return this.usuarios;
+
+//        Collections.sort(usuarios);
+//        return usuarios;
     }
+    
+    
     
     /**
      * Busca si existen usuarios con el apellido especificado (total o parcialmente)
@@ -85,13 +103,20 @@ public class GestorUsuarios implements IGestorUsuarios{
      * @return Lista de usuarios con el apellido ingresado
      */
     @Override
-    public ArrayList<Usuario> buscarUsuarios(String apellido){
-        ArrayList<Usuario> usuariosAp = new ArrayList<>();
+    public List<Usuario> buscarUsuarios(String apellido){
+        /* Compara los apellidos y los nombres de los usuarios por separado
+         * Envía el usuario ordenado por apellido y luego por el nombre
+         */
+        List<Usuario> usuariosAp = new ArrayList<>();
         for(Usuario u : this.usuarios){
             if(u.verApellido().toLowerCase().contains(apellido.toLowerCase())){
                 usuariosAp.add(u);
             }
         }
+        
+        Collections.sort(usuariosAp);
+        //Falta ordenamiento por nombre. Debo realizar Collections.sort(usuariosAp)?
+        //implementando compareTo en usuario y comparando los nombres?
         return usuariosAp;
     }
     
@@ -159,22 +184,22 @@ public class GestorUsuarios implements IGestorUsuarios{
      */
     public String validarUsuario(String correo, String apellido, String nombre, Perfil perfil, String clave, String claveRepetida){
         if (correo == null || correo.isEmpty() || !correo.contains("@") || (correo.indexOf("@") != correo.lastIndexOf("@"))) {
-            return this.ERROR_CORREO;
+            return ERROR_CORREO;
         }
         if (apellido == null || apellido.isEmpty()) {
-            return this.ERROR_APELLIDO;
+            return ERROR_APELLIDO;
         }
         if(nombre == null || nombre.isEmpty()){
-            return this.ERROR_NOMBRE;
+            return ERROR_NOMBRE;
         }
         if (clave == null || clave.isEmpty()) {
-            return this.ERROR_CONTRASENIA;
+            return ERROR_CONTRASENIA;
         }
         if (claveRepetida == null || claveRepetida.isEmpty() || !claveRepetida.equals(clave)) {
-            return this.ERROR_CLAVES;
+            return ERROR_CLAVES;
         }
         
-        return this.VALIDACION_EXITO;
+        return VALIDACION_EXITO;
     }
     
     /**
@@ -184,17 +209,18 @@ public class GestorUsuarios implements IGestorUsuarios{
      */
     public String agregarUsuario(Usuario usuario){
         if(this.usuarios.contains(usuario)){ 
-            return this.USUARIOS_DUPLICADOS;
+            return USUARIOS_DUPLICADOS;
         }
         else{
             this.usuarios.add(usuario);
-            return this.EXITO;
+            return EXITO;
         }
     }
 
     /**
      * Método auxiliar para revisión desde consola
      */
+    @Override
     public void mostrarUsuarios(){
         for (Usuario u : this.usuarios){
             u.mostrar();

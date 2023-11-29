@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import productos.modelos.Producto;
 import usuarios.modelos.Cliente;
 import usuarios.modelos.GestorUsuarios;
@@ -21,7 +24,7 @@ import usuarios.modelos.Usuario;
 public class GestorPedidos implements IGestorPedidos{
     //Atributos
     private static GestorPedidos gestor;
-    private ArrayList<Pedido> pedidos = new ArrayList<>();
+    private List<Pedido> pedidos = new ArrayList<>();
     
     /**
      * Constructor
@@ -51,9 +54,9 @@ public class GestorPedidos implements IGestorPedidos{
      * @return Resultado de la operación
      */
     @Override
-    public String crearPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    public String crearPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         String validacion = validarPedido(fecha, hora, productosDelPedido, cliente);
-        if(validacion.equals(this.VALIDACION_EXITO)){
+        if(validacion.equals(VALIDACION_EXITO)){
             LocalDateTime fechaYhora = LocalDateTime.of(fecha, hora);
             int numPedido = this.pedidos.size() + 1;
             Pedido pedido = new Pedido(numPedido, fechaYhora, productosDelPedido, cliente);
@@ -75,13 +78,13 @@ public class GestorPedidos implements IGestorPedidos{
     public String cambiarEstado(Pedido pedidoAModificar){
         if(pedidoAModificar.estado.toString().toLowerCase().equalsIgnoreCase("Creado")){
             pedidoAModificar.estado = Estado.PROCESANDO;
-            return this.EXITO_MODIFICAR;
+            return EXITO_MODIFICAR;
         }
         if(pedidoAModificar.estado.toString().toLowerCase().equalsIgnoreCase("Procesando")){
             pedidoAModificar.estado = Estado.ENTREGRADO;
-            return this.EXITO_MODIFICAR;
+            return EXITO_MODIFICAR;
         }
-        return this.ERROR_ESTADO + ". " + ERROR_MODIFICAR;  
+        return ERROR_ESTADO + ". " + ERROR_MODIFICAR;  
     }
 
     /**
@@ -89,8 +92,9 @@ public class GestorPedidos implements IGestorPedidos{
      * @return Lista de todos los pedidos
      */
     @Override
-    public ArrayList<Pedido> verPedidos(){
-        return this.pedidos;
+    public List<Pedido> verPedidos(){
+        Collections.sort(pedidos);
+        return pedidos;
     }
     
     /**
@@ -187,21 +191,21 @@ public class GestorPedidos implements IGestorPedidos{
      * @param cliente Cliente que hace el pedido
      * @return Resultado de la operación
      */
-    public String validarPedido(LocalDate fecha, LocalTime hora, ArrayList<ProductoDelPedido> productosDelPedido, Cliente cliente){
+    public String validarPedido(LocalDate fecha, LocalTime hora, List<ProductoDelPedido> productosDelPedido, Cliente cliente){
         if (fecha == null){
-            return this.ERROR_FECHA;
+            return ERROR_FECHA;
         }
         if (hora == null) {
-            return this.ERROR_HORA;
+            return ERROR_HORA;
         }
         if (productosDelPedido == null || productosDelPedido.isEmpty()) {
-            return this.ERROR_PRODUCTOS_DEL_PEDIDO;
+            return ERROR_PRODUCTOS_DEL_PEDIDO;
         }
         if(cliente == null){
-            return this.ERROR_CLIENTE;
+            return ERROR_CLIENTE;
         }
         
-        return this.VALIDACION_EXITO;
+        return VALIDACION_EXITO;
     }
     
     /**
@@ -211,17 +215,18 @@ public class GestorPedidos implements IGestorPedidos{
      */
     public String agregarPedido(Pedido pedido){
         if(this.pedidos.contains(pedido)){ 
-            return this.PEDIDOS_DUPLICADOS;
+            return PEDIDOS_DUPLICADOS;
         }
         else{
             this.pedidos.add(pedido);
-            return this.EXITO;
+            return EXITO;
         }
     }
     
     /**
      * Método auxiliar para revisión desde consola
      */
+    @Override
     public void mostrarPedidos(){
         for (Pedido p : this.pedidos){
             p.mostrar();
