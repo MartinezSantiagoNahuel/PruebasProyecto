@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package productos.modelos;
-
-import java.util.Comparator;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * Atributos y comportamientos de los objetos creados como productos
@@ -17,6 +19,7 @@ public class Producto implements Comparable<Producto>{
     private String descripcion;
     private float precio;
     private Categoria categoria;
+    File f = new File("src/productos.txt");
     
     /**
      * Constructor
@@ -120,9 +123,8 @@ public class Producto implements Comparable<Producto>{
         System.out.println("Precio:" + this.verPrecio());
         System.out.print("Categoria:" + this.verCategoria());
         System.out.println(" Vigente:" + this.verEstado());
-        
     }
-
+    
     /**
      * Muestra la instancia en forma de String
      * @return Producto
@@ -181,5 +183,18 @@ public class Producto implements Comparable<Producto>{
             return o.categoria.compareTo(this.verCategoria())*(-1);
         }
     }   
+    
+    
+    
+    public void crearArchivo(String archivo){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true));
+            bw.write(this.categoria + "," + this.codigo + "," + this.descripcion + "," + this.precio + "," + this.estado + "\n");
+            bw.close();
+        }  catch (IOException ioe) {
+            
+        }
+        
+    }
     
 }
