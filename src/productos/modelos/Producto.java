@@ -5,6 +5,7 @@
 package productos.modelos;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -19,7 +20,6 @@ public class Producto implements Comparable<Producto>{
     private String descripcion;
     private float precio;
     private Categoria categoria;
-    File f = new File("src/productos.txt");
     
     /**
      * Constructor
@@ -30,7 +30,7 @@ public class Producto implements Comparable<Producto>{
      * @param estado Estado del producto
      * @param precio Precio producto
      */
-    public Producto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado) {
+    public Producto(int codigo, String descripcion, Categoria categoria, Estado estado, float precio) {
         this.estado = estado;
         this.codigo = codigo;
         this.descripcion = descripcion;
@@ -182,19 +182,5 @@ public class Producto implements Comparable<Producto>{
         else{
             return o.categoria.compareTo(this.verCategoria())*(-1);
         }
-    }   
-    
-    
-    
-    public void crearArchivo(String archivo){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true));
-            bw.write(this.categoria + "," + this.codigo + "," + this.descripcion + "," + this.precio + "," + this.estado + "\n");
-            bw.close();
-        }  catch (IOException ioe) {
-            
-        }
-        
-    }
-    
+    }      
 }

@@ -39,7 +39,7 @@ public class ControladorPrincipal {
     
         IGestorPedidos gestorPedidos = GestorPedidos.crear();
         IGestorUsuarios gestorUsuarios = GestorUsuarios.crear();
-        IGestorProductos gestorProductos = GestorProductos.crear();
+        IGestorProductos gestorProductos = GestorProductos.instanciar();
         
         //GESTOR USUARIOS****************************************************************
         //Clientes
@@ -111,16 +111,16 @@ public class ControladorPrincipal {
 //        System.out.println("5."+gestorProductos.crearProducto(5, "Producto5", 5, null, Estado.DISPONIBLE)); //sin categoría
 //        System.out.println("6."+gestorProductos.crearProducto(6, "Producto6", 6, Categoria.ENTRADA, null)); //sin estado
 //        System.out.println("7."+gestorProductos.crearProducto(1, "Producto7", 7, Categoria.ENTRADA, Estado.DISPONIBLE)); //producto repetido
-        System.out.println("8."+gestorProductos.crearProducto(8, "Producto8", 8, Categoria.PLATOPRINCIPAL, Estado.NO_DISPONIBLE)); //producto repetido
+        System.out.println("8."+gestorProductos.crearProducto(8, "Producto8", 8, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE)); //producto repetido
         
         System.out.println("\nProductos:");
         System.out.println("==========");
         gestorProductos.mostrarProductos();
         
 //        System.out.println("\nResultado del metodo modificarProducto()");
-        Producto productoExito = new Producto(1, "Producto1", 1, Categoria.ENTRADA, Estado.DISPONIBLE);
-        Producto productoError = new Producto(0, "", 0, Categoria.PLATOPRINCIPAL, Estado.NO_DISPONIBLE);
-//        Producto modificacionError = new Producto(8, "", 0, Categoria.PLATOPRINCIPAL, Estado.NO_DISPONIBLE);
+        Producto productoExito = new Producto(1, "Producto1", Categoria.ENTRADA, Estado.DISPONIBLE, 1);
+        Producto productoError = new Producto(0, "", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 0);
+//        Producto modificacionError = new Producto(8, "", 0, Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE);
 //        System.out.println(gestorProductos.modificarProducto(productoExito, 2, "cambio", 2, Categoria.ENTRADA, Estado.DISPONIBLE));
 //        System.out.println(gestorProductos.modificarProducto(productoError, 9, "productoError", 2, Categoria.ENTRADA, Estado.DISPONIBLE));
 //        System.out.println(gestorProductos.modificarProducto(modificacionError, 9, "", 2, Categoria.ENTRADA, Estado.DISPONIBLE));
@@ -137,13 +137,13 @@ public class ControladorPrincipal {
 //        
 //        System.out.println("\nResultado del metodo existeEsteProducto()");
 //        Producto productoTrue = new Producto(1, "", 0, Categoria.ENTRADA, Estado.DISPONIBLE);
-//        Producto productoFalse = new Producto(0, "", 0, Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE);
+//        Producto productoFalse = new Producto(0, "", 0, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE);
 //        System.out.println(gestorProductos.existeEsteProducto(productoTrue));
 //        System.out.println(gestorProductos.existeEsteProducto(productoFalse));
 //        
 //        System.out.println("\nResultado del metodo verProductosPorCategoria()");
 //        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.ENTRADA));
-//        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.PLATOPRINCIPAL));
+//        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.PLATO_PRINCIPAL));
 //        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.POSTRE));
         
 //        System.out.println("\nResultado del metodo obtenerProducto()");

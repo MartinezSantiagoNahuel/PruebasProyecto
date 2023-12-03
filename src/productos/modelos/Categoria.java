@@ -9,7 +9,7 @@ package productos.modelos;
  * @author marti
  */
 public enum Categoria {
-    ENTRADA("Entrada"), PLATOPRINCIPAL("Plato Principal"), POSTRE("Postre");
+    ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato_Principal"), POSTRE("Postre");
     
     /**
      * Muestra el valor de la enumeración elegida

@@ -26,14 +26,14 @@ import usuarios.modelos.Perfil;
  */
 public class ControladorPrincipalTP6 {
     public static void main(String[] args) {
-        IGestorPedidos gestorPedidos = GestorPedidos.crear();
+       IGestorPedidos gestorPedidos = GestorPedidos.crear();
         IGestorUsuarios gestorUsuarios = GestorUsuarios.crear();
-        IGestorProductos gestorProductos = GestorProductos.crear();  
+        IGestorProductos gestorProductos = GestorProductos.instanciar();  
         
         //GESTOR PRODUCTOS**********************************************************
         //Productos
         System.out.println();
-        System.out.println("2."+gestorProductos.crearProducto(2, "Producto2", 2, Categoria.PLATOPRINCIPAL, Estado.DISPONIBLE));
+        System.out.println("2."+gestorProductos.crearProducto(2, "Producto2", 2, Categoria.PLATO_PRINCIPAL, Estado.DISPONIBLE));
         System.out.println("1."+gestorProductos.crearProducto(1, "Producto1", 1, Categoria.ENTRADA, Estado.DISPONIBLE));
         System.out.println("4."+gestorProductos.crearProducto(4, "Producto4", 4, Categoria.POSTRE, Estado.DISPONIBLE)); 
         System.out.println("3."+gestorProductos.crearProducto(3, "Producto3", 3, Categoria.ENTRADA, Estado.DISPONIBLE)); 
@@ -48,7 +48,7 @@ public class ControladorPrincipalTP6 {
 //        
 //        System.out.println("\nResultado del metodo verProductosPorCategoria()");
 //        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.ENTRADA));
-//        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.PLATOPRINCIPAL));
+//        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.PLATO_PRINCIPAL));
 //        System.out.println(gestorProductos.verProductosPorCategoria(Categoria.POSTRE));
 
         
@@ -74,7 +74,7 @@ public class ControladorPrincipalTP6 {
 
         //GESTOR PEDIDOS**********************************************************
 //        Producto productoExito = new Producto(1, "Producto1", 1, Categoria.ENTRADA, Estado.DISPONIBLE);
-        Producto productoError = new Producto(0, "", 0, Categoria.PLATOPRINCIPAL, Estado.NO_DISPONIBLE);
+        Producto productoError = new Producto(0, "", Categoria.PLATO_PRINCIPAL, Estado.NO_DISPONIBLE, 0);
         ArrayList<ProductoDelPedido> productosDelPedido1 = new ArrayList<>();
         ProductoDelPedido pdp1 = new ProductoDelPedido(gestorProductos.menu().get(0), 1); //Se agrega producto exito
         ProductoDelPedido pdp2 = new ProductoDelPedido(productoError, 2);        
