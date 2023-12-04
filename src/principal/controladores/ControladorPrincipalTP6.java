@@ -26,8 +26,8 @@ import usuarios.modelos.Perfil;
  */
 public class ControladorPrincipalTP6 {
     public static void main(String[] args) {
-       IGestorPedidos gestorPedidos = GestorPedidos.crear();
-        IGestorUsuarios gestorUsuarios = GestorUsuarios.crear();
+        IGestorPedidos gestorPedidos = GestorPedidos.crear();
+        IGestorUsuarios gestorUsuarios = GestorUsuarios.instanciar();
         IGestorProductos gestorProductos = GestorProductos.instanciar();  
         
         //GESTOR PRODUCTOS**********************************************************

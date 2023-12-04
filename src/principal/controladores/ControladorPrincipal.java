@@ -38,7 +38,7 @@ public class ControladorPrincipal {
     public static void main(String[] args) {
     
         IGestorPedidos gestorPedidos = GestorPedidos.crear();
-        IGestorUsuarios gestorUsuarios = GestorUsuarios.crear();
+        IGestorUsuarios gestorUsuarios = GestorUsuarios.instanciar();
         IGestorProductos gestorProductos = GestorProductos.instanciar();
         
         //GESTOR USUARIOS****************************************************************

@@ -25,12 +25,13 @@ public class GestorProductos implements IGestorProductos{
     //Atributos
     private static GestorProductos gestor;
     private List<Producto> productos = new ArrayList<>();
-    String archivo = "./Productos.txt";
+    public static final String archivo = "./Productos.txt";
    
     /**
      * Constructor
      */
     private GestorProductos() {
+        this.leerArchivo();
     }
     
     //Métodos
@@ -56,7 +57,7 @@ public class GestorProductos implements IGestorProductos{
      */
     @Override
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado){
-         this.leerArchivo();
+        this.leerArchivo();
         String validacion = validarProducto(codigo, descripcion, precio, categoria, estado);
         if(validacion.equals(VALIDACION_EXITO)){
             Producto producto = new Producto(codigo, descripcion, categoria, estado, precio);

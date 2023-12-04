@@ -17,7 +17,7 @@ import productos.modelos.Estado;
 import productos.modelos.GestorProductos;
 import usuarios.modelos.GestorUsuarios;
 import usuarios.modelos.Usuario;
-//import usuarios.vistas.VentanaAMUsuario;
+import usuarios.vistas.VentanaAMUsuario;
 
 /**
  *
@@ -26,7 +26,7 @@ import usuarios.modelos.Usuario;
 public class ControladorPrincipalTP7  {
     public static void main(String[] args) {
         IGestorProductos gp = GestorProductos.instanciar();
-//        IGestorUsuarios gu = GestorUsuarios.instanciar();
+        IGestorUsuarios gu = GestorUsuarios.instanciar();
         List<Usuario> usuarios =new ArrayList<>();
         //Creación de productos
 
@@ -119,11 +119,11 @@ public class ControladorPrincipalTP7  {
         System.out.println();
         
         establecerLookAndFeel("Nimbus"); 
-//        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
+        VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
               
         System.out.println("USUARIOS");
         System.out.println("=====");
-//        usuarios=gu.verUsuarios();
+        usuarios=gu.verUsuarios();
         for(Usuario u : usuarios) {
             u.mostrar();
             System.out.println();

@@ -30,7 +30,7 @@ public class GestorUsuarios implements IGestorUsuarios{
      * Mecanismo para que sólo se pueda crear una instancia de GestorUsuarios
      * @return gestor como única instancia
      */
-    public static GestorUsuarios crear(){
+    public static GestorUsuarios instanciar(){
         if(gestor == null){
             gestor = new GestorUsuarios();
         }

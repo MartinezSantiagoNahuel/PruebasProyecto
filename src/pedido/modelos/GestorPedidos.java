@@ -169,7 +169,7 @@ public class GestorPedidos implements IGestorPedidos{
     @Override
     public String cancelarPedido(Pedido pedido) {
         GestorPedidos gestorPedidos = GestorPedidos.crear();
-        GestorUsuarios gestorUsuarios = GestorUsuarios.crear();
+        GestorUsuarios gestorUsuarios = GestorUsuarios.instanciar();
         for(Usuario usuario : gestorUsuarios.verUsuarios()){
             if(usuario instanceof Cliente){
                 if(usuario.verPedidos().contains(pedido)){
