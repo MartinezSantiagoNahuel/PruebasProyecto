@@ -96,6 +96,10 @@ public class ProductoDelPedido {
     }
 
     //Método auxiliar para control por pantalla TP6
+    /**
+     * Devuelve los datos del producto del pedido en forma de String
+     * @return pedido
+     */
     @Override
     public String toString() {
         return "ProductoDelPedido{" + "cantidad=" + cantidad + ", unProducto=" + unProducto + '}' + "\n";

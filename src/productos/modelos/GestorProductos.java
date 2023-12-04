@@ -25,7 +25,7 @@ public class GestorProductos implements IGestorProductos{
     //Atributos
     private static GestorProductos gestor;
     private List<Producto> productos = new ArrayList<>();
-    String archivo = "./productos.txt";
+    String archivo = "./Productos.txt";
    
     /**
      * Constructor
@@ -193,6 +193,83 @@ public class GestorProductos implements IGestorProductos{
         }
     }
     
+    /**
+     * 
+     */
+    public void leerArchivo(){
+        BufferedReader br = null;
+        File file = new File(this.archivo);
+        if (file.exists()) {
+            try {
+                FileReader fr = new FileReader(file);
+                br = new BufferedReader(fr);
+                String cadena;
+                while((cadena = br.readLine()) == null) {
+                    String[] vector = cadena.split(",");
+                    Estado estado = Estado.valueOf(vector[0]);
+                    int codigo = Integer.parseInt(vector[1]);
+                    String descripcion = vector[2];
+                    float precio = Float.parseFloat(vector[3]);
+                    Categoria categoria = Categoria.valueOf(vector[4]);
+                           
+                    Producto unProducto = new Producto(codigo, descripcion, categoria, estado, precio);
+                    this.productos.add(unProducto); 
+                }
+                
+            }
+            catch (IllegalArgumentException | IOException ex) {
+                System.out.println(ERROR_LECTURA_ARCHIVO);
+                ex.printStackTrace();
+            }
+            finally {
+                if (br != null) {
+                    try {
+                        br.close();
+                    }
+                    catch (IOException ioe) {
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * 
+     */
+    public void escribirArchivo(){
+        BufferedWriter bw = null;
+        File file = new File(this.archivo);
+        try {
+            FileWriter fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            for (Producto producto : this.productos) {
+                String linea;
+                linea = producto.verEstado() + ",";
+                linea += Integer.toString(producto.verCodigo()) + ",";
+                linea += producto.verDescripcion() + ",";
+                linea += Float.toString(producto.verPrecio()) + ",";
+                linea += producto.verCategoria();            
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException ioe) {
+            System.out.println(ERROR_ESCRITURA_ARCHIVO);
+            ioe.printStackTrace();
+        }
+        finally {
+            if (bw != null) {
+                try {
+                    bw.close();
+                }
+                catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+            }       
+        }
+    }
+    
+    
     //Métodos auxiliares
     /**
      * Verifica si un producto cumple con los requisitos
@@ -222,84 +299,6 @@ public class GestorProductos implements IGestorProductos{
         
         return VALIDACION_EXITO;
     }
-    
-    public void leerArchivo(){
-        File f = new File(this.archivo);
-        BufferedReader br = null;
-        
-        if (f.exists()) {
-            try {
-                FileReader fr = new FileReader(f);
-                br = new BufferedReader(fr);
-                String cadena;
-                while((cadena = br.readLine()) != null) {
-                    String[] vector = cadena.split(",");
-                    Estado estado = Estado.valueOf(vector[0].toUpperCase());
-                    int codigo = Integer.parseInt(vector[1]);
-                    String descripcion = vector[2];
-                    float precio = Float.parseFloat(vector[3]);
-                    Categoria categoria = Categoria.valueOf(vector[4].toUpperCase());
-                           
-                    Producto unProducto = new Producto(codigo, descripcion, Categoria.ENTRADA, estado, precio);
-                    this.productos.add(unProducto); 
-                }
-                br.close();
-            }
-            catch ( FileNotFoundException ex) {
-                System.out.println("No se pudo leer el archivo.");
-                ex.printStackTrace();
-            }
-            catch (IOException | IllegalArgumentException ex){
-                System.out.println("No se pudo leer el archivo.");
-                ex.printStackTrace();
-            }
-            finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    }
-                    catch (IOException ioe) {
-                        ioe.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
-    
-    public void escribirArchivo(){
-        BufferedWriter bw = null;
-        File f = new File(this.archivo);
-        
-        try {
-            FileWriter fw = new FileWriter(f, true);
-            bw = new BufferedWriter(fw);
-            for (Producto producto : this.productos) {
-                String linea;
-                linea = producto.verEstado() + ",";
-                linea += Integer.toString(producto.verCodigo()) + ",";
-                linea += producto.verDescripcion() + ",";
-                linea += Float.toString(producto.verPrecio()) + ",";
-                linea += producto.verCategoria();            
-                bw.write(linea);
-                bw.newLine();
-            }
-        } catch (IOException ioe) {
-            System.out.println("No se pudo leer el archivo.");
-            ioe.printStackTrace();
-        }
-//        finally {
-//            if (bw != null) {
-//                try {
-//                    bw.close();
-//                }
-//                catch (IOException ioe) {
-//                    ioe.printStackTrace();
-//                }
-//            }       
-//        }
-    }
-    
-    
     
     /**
      * Agrega un producto a la lista dependiendo de si ya está agregado o no

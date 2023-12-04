@@ -140,6 +140,9 @@ public abstract class Usuario implements Comparable<Usuario>{
     }
 
     @Override
+    /**
+     * 
+     */
     public String toString() {
         return "Usuario{" + "correo=" + this.verCorreo() + ", apellido=" + this.verApellido() + ", nombre=" + this.verNombre() + ", clave=" + this.verClave()  + '}' + "\n" ;
     }
@@ -151,6 +154,11 @@ public abstract class Usuario implements Comparable<Usuario>{
      */
     public abstract List<Pedido> verPedidos();
     
+    /**
+     * 
+     * @param o
+     * @return 
+     */
     @Override
     public int compareTo(Usuario o) {
         if(o.apellido.compareTo(this.verApellido()) == 0){

@@ -32,6 +32,9 @@ public interface IGestorProductos {
     public static final String VALIDACION_ERROR = "Los datos del producto son incorrectos";
     public static final String PRODUCTO_INEXISTENTE = "No existe el producto especificado";
     
+    public static final String ERROR_LECTURA_ARCHIVO = "No se pudo leer el archivo.";
+    public static final String ERROR_ESCRITURA_ARCHIVO = "No se pudo escribir el archivo.";
+    
     public String crearProducto(int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
     public String modificarProducto(Producto productoAModificar, int codigo, String descripcion, float precio, Categoria categoria, Estado estado);
     public List<Producto> menu();

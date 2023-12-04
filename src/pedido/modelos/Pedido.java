@@ -186,6 +186,10 @@ public class Pedido implements Comparable<Pedido>{
         return 0;
     }   
 
+    /**
+     * Devuelve los datos del pedido en forma de String
+     * @return pedido
+     */
     @Override
     public String toString() {
         return "Pedido{" + "numero=" + numero + ", estado=" + estado + ", fechaYhora=" + fechaYhora + ", unCliente=" + unCliente + ", pdp=" + pdp + '}' + "\n";

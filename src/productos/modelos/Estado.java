@@ -6,7 +6,7 @@ package productos.modelos;
 
 /**
  * Determina la condición de un producto
- * @author marti
+ * @author Martinez Santiago
  */
 public enum Estado {
     DISPONIBLE("Disponible"), NO_DISPONIBLE("No Disponible");
