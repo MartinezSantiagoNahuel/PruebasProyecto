@@ -12,7 +12,7 @@ public enum Perfil {
     CLIENTE("Cliente"), EMPLEADO("Empleado"), ENCARGADO("Encargado");
     
     /**
-     * Guarda el valor de la enumeración elegida
+     * Guarda el valor de la enumeración elegida.
      */
     private String value;
     

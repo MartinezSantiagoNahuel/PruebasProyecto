@@ -12,6 +12,10 @@ import usuarios.modelos.Cliente;
 import usuarios.modelos.ModeloComboPerfiles;
 import usuarios.modelos.Perfil;
 
+/**
+ * Ventana destinada al Alta y Modificación de los Usuarios del programa
+ * @author Ana Kuenneth
+ */
 public class VentanaAMUsuario extends JDialog {
 
     private ArrayList<Cliente> clientes = new ArrayList<>();
@@ -28,20 +32,14 @@ public class VentanaAMUsuario extends JDialog {
     }
 
     /**
-     * 
-     * 
+     * Destinado para el uso y configuración de los distintos perfiles de los usuarios
+     * Configura el combo de perfiles.
      */
     private void configurarComboPerfiles() {
         ModeloComboPerfiles mcp = new ModeloComboPerfiles();
-        Perfiles.setModel(mcp);
+        comboPerfiles.setModel(mcp);
         
     }
-
-    
-
-        /**
-        * Configura el combo de estados
-        */
 
           
     /**
@@ -66,7 +64,7 @@ public class VentanaAMUsuario extends JDialog {
         jLabel7 = new javax.swing.JLabel();
         passClave1 = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
-        Perfiles = new javax.swing.JComboBox<>();
+        comboPerfiles = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -118,10 +116,10 @@ public class VentanaAMUsuario extends JDialog {
 
         jLabel8.setText("Perfil:");
 
-        Perfiles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        Perfiles.addActionListener(new java.awt.event.ActionListener() {
+        comboPerfiles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPerfiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PerfilesActionPerformed(evt);
+                comboPerfilesActionPerformed(evt);
             }
         });
 
@@ -157,7 +155,7 @@ public class VentanaAMUsuario extends JDialog {
                         .addGap(43, 43, 43)
                         .addComponent(btnCancelar)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(Perfiles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(comboPerfiles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,7 +184,7 @@ public class VentanaAMUsuario extends JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(Perfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboPerfiles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
@@ -225,15 +223,15 @@ public class VentanaAMUsuario extends JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoActionPerformed
 
-    private void PerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilesActionPerformed
+    private void comboPerfilesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPerfilesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_PerfilesActionPerformed
+    }//GEN-LAST:event_comboPerfilesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Perfiles;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox<String> comboPerfiles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

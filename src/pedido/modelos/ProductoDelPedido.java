@@ -97,7 +97,7 @@ public class ProductoDelPedido {
 
     //Método auxiliar para control por pantalla TP6
     /**
-     * Devuelve los datos del producto del pedido en forma de String
+     * Devuelve la instancia de ProductoDelPedido en forma de String
      * @return pedido
      */
     @Override

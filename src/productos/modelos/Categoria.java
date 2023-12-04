@@ -12,7 +12,7 @@ public enum Categoria {
     ENTRADA("Entrada"), PLATO_PRINCIPAL("Plato Principal"), POSTRE("Postre");
     
     /**
-     * Muestra el valor de la enumeración elegida
+     * Muestra el valor de la enumeración elegida.
      */
     private String value;
     

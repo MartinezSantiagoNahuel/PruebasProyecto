@@ -12,7 +12,7 @@ public enum Estado {
     DISPONIBLE("Disponible"), NO_DISPONIBLE("No Disponible");
     
     /**
-     * Guarda el valor de la enumeración elegida
+     * Guarda el valor de la enumeración elegida.
      */
     private String value;
     

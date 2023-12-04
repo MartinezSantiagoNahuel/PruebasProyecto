@@ -13,7 +13,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class ModeloComboPerfiles extends DefaultComboBoxModel {
     /**
-     * Constructor
+     * Constructor.
     */
     public ModeloComboPerfiles() { 
         for (Perfil perfil : Perfil.values()) {

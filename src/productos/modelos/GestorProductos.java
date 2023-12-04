@@ -28,7 +28,7 @@ public class GestorProductos implements IGestorProductos{
     public static final String archivo = "./Productos.txt";
    
     /**
-     * Constructor
+     * Constructor.
      */
     private GestorProductos() {
         this.leerArchivo();
@@ -195,7 +195,8 @@ public class GestorProductos implements IGestorProductos{
     }
     
     /**
-     * 
+     * Se encarga de leer el archivo donde se guarda la lista de productos
+     * Si no existe lo crea, si ya existe lo lee.
      */
     public void leerArchivo(){
         BufferedReader br = null;
@@ -236,7 +237,7 @@ public class GestorProductos implements IGestorProductos{
     }
     
     /**
-     * 
+     * Se encarga de la escritura y modificación del archivo donde se guarda la lista de productos.
      */
     public void escribirArchivo(){
         BufferedWriter bw = null;
@@ -318,7 +319,7 @@ public class GestorProductos implements IGestorProductos{
     }
     
     /**
-     * Método auxiliar para revisión desde consola
+     * Método auxiliar para revisión desde consola.
      */
     @Override
     public void mostrarProductos(){

@@ -14,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ModeloComboCategorias extends DefaultComboBoxModel {
     
     /**
-     * Constructor
+     * Constructor.
     */
     public ModeloComboCategorias() { 
         for (Categoria categoria : Categoria.values()) {

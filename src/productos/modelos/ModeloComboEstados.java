@@ -14,7 +14,7 @@ import javax.swing.DefaultComboBoxModel;
 public class ModeloComboEstados extends DefaultComboBoxModel {
     
     /**
-     * Constructor
+     * Constructor.
     */
     public ModeloComboEstados() { 
         for (Estado estado : Estado.values()) {

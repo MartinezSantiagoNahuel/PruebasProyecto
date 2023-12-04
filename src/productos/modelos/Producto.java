@@ -116,7 +116,7 @@ public class Producto implements Comparable<Producto>{
     }
     
     /**
-     * Muestra los atributos del producto creado
+     * Muestra los atributos del producto creado.
      */
     public void mostrar(){
         System.out.println("Producto: " + this.verDescripcion());

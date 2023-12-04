@@ -112,7 +112,7 @@ public class Pedido implements Comparable<Pedido>{
     
     
     /**
-     * Muestra los atributos del producto creado
+     * Muestra los atributos del producto creado.
      */
     public void mostrar(){
         String patronFecha = "dd/MM/yyyy";
@@ -187,7 +187,7 @@ public class Pedido implements Comparable<Pedido>{
     }   
 
     /**
-     * Devuelve los datos del pedido en forma de String
+     * Devuelve la instancia de Pedido en forma de String
      * @return pedido
      */
     @Override

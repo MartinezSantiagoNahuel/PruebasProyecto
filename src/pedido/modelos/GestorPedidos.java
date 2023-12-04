@@ -27,7 +27,7 @@ public class GestorPedidos implements IGestorPedidos{
     private List<Pedido> pedidos = new ArrayList<>();
     
     /**
-     * Constructor
+     * Constructor.
      */
     public GestorPedidos() {
     }
@@ -224,7 +224,7 @@ public class GestorPedidos implements IGestorPedidos{
     }
     
     /**
-     * Método auxiliar para revisión desde consola
+     * Método auxiliar para revisión desde consola.
      */
     @Override
     public void mostrarPedidos(){

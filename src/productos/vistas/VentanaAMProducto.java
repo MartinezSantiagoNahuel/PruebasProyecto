@@ -16,6 +16,10 @@ import productos.modelos.ModeloComboCategorias;
 import productos.modelos.ModeloComboEstados;
 import productos.modelos.Producto;
 
+/**
+ * Ventana destinada al Alta y Modificación de los Productos del restaurante
+ * @author Ana Kuenneth
+ */
 public class VentanaAMProducto extends JDialog {
     private ArrayList<Producto> productos = new ArrayList<>();
     

@@ -12,7 +12,7 @@ public enum Estado {
     CREADO("Creado"), SOLICITADO("Solicitado"), PROCESANDO("Procesando"), ENTREGRADO("Entregado");
     
     /**
-     * Guarda el valor de la enumeración elegida
+     * Guarda el valor de la enumeración elegida.
      */
     private String value;
 

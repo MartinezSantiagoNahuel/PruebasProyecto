@@ -21,7 +21,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     private List<Usuario> usuarios = new ArrayList<>();
 
     /**
-     * Constructor
+     * Constructor.
      */
     private GestorUsuarios() {
     }
@@ -115,8 +115,6 @@ public class GestorUsuarios implements IGestorUsuarios{
         }
         
         Collections.sort(usuariosAp);
-        //Falta ordenamiento por nombre. Debo realizar Collections.sort(usuariosAp)?
-        //implementando compareTo en usuario y comparando los nombres?
         return usuariosAp;
     }
     
@@ -218,7 +216,7 @@ public class GestorUsuarios implements IGestorUsuarios{
     }
 
     /**
-     * Método auxiliar para revisión desde consola
+     * Método auxiliar para revisión desde consola.
      */
     @Override
     public void mostrarUsuarios(){
