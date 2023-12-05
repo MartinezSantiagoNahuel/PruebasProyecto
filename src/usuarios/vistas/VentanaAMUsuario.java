@@ -10,6 +10,7 @@ import java.awt.Dialog;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import usuarios.modelos.Cliente;
@@ -252,24 +253,34 @@ public class VentanaAMUsuario extends JDialog {
         String correo = this.txtCorreo.getText().trim();
         String apellido = this.txtApellido.getText().trim();
         String nombre = this.txtNombre.getText().trim();
-        
-        String clave = "";
-        char[] passclave = this.passClave.getPassword();
-        for (int i = 0; i < passclave.length; i++) {
-            clave += passclave[i];
-        }
+        String clave = new String(this.passClave.getPassword());
+        String claveRepetida = new String(this.passClaveRep.getPassword());
+//        String clave = "";
+//        char[] passclave = this.passClave.getPassword();
+//        for (int i = 0; i < passclave.length; i++) {
+//            clave += passclave[i];
+//        }
 
         
         String passclaverep = "";
         char[] claveRepAux = this.passClaveRep.getPassword();
-        for (int i = 0; i < claveRepAux.length; i++) {
-            passclaverep += claveRepAux[i];
-        }
+//        for (int i = 0; i < claveRepAux.length; i++) {
+//            passclaverep += claveRepAux[i];
+//        }
 
         Perfil perfil = ((ModeloComboPerfiles) this.comboPerfiles.getModel()).obtenerPerfil();
         
-        gu.crearUsuario(correo, apellido, nombre, perfil, clave, clave);
+        String mensajeError=gu.crearUsuario(correo, apellido, nombre, perfil, clave, claveRepetida);
         
+        if(!mensajeError.equals(gu.EXITO)){
+            JOptionPane.showMessageDialog(null, mensajeError, gu.ERROR, JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            
+            JOptionPane.showMessageDialog(null, mensajeError, gu.VALIDACION_EXITO, JOptionPane.PLAIN_MESSAGE);
+        }
+        
+        System.out.println( mensajeError);
         System.out.println("Usuarios");
         System.out.println("========");
         
