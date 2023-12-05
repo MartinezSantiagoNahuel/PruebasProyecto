@@ -25,7 +25,7 @@ public class GestorProductos implements IGestorProductos{
     //Atributos
     private static GestorProductos gestor;
     private List<Producto> productos = new ArrayList<>();
-    public static final String archivo = "./Productos.txt";
+    public static final String archivo = "./productos.txt";
    
     /**
      * Constructor.
@@ -206,7 +206,7 @@ public class GestorProductos implements IGestorProductos{
                 FileReader fr = new FileReader(file);
                 br = new BufferedReader(fr);
                 String cadena;
-                while((cadena = br.readLine()) == null) {
+                while((cadena = br.readLine()) != null) {
                     String[] vector = cadena.split(",");
                     Estado estado = Estado.valueOf(vector[0]);
                     int codigo = Integer.parseInt(vector[1]);
@@ -241,17 +241,21 @@ public class GestorProductos implements IGestorProductos{
      */
     public void escribirArchivo(){
         BufferedWriter bw = null;
-        File file = new File(this.archivo);
         try {
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(this.archivo);
             bw = new BufferedWriter(fw);
             for (Producto producto : this.productos) {
                 String linea;
                 linea = producto.verEstado() + ",";
+                System.out.println(linea);
                 linea += Integer.toString(producto.verCodigo()) + ",";
+                System.out.println(linea);
                 linea += producto.verDescripcion() + ",";
+                System.out.println(linea);
                 linea += Float.toString(producto.verPrecio()) + ",";
-                linea += producto.verCategoria();            
+                System.out.println(linea);
+                linea += producto.verCategoria(); 
+                System.out.println(linea);
                 bw.write(linea);
                 bw.newLine();
             }
