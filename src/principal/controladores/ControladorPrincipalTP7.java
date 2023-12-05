@@ -27,7 +27,7 @@ public class ControladorPrincipalTP7  {
     public static void main(String[] args) {
         IGestorProductos gp = GestorProductos.instanciar();
         IGestorUsuarios gu = GestorUsuarios.instanciar();
-        List<Usuario> usuarios =new ArrayList<>();
+        List<Usuario> usuarios = new ArrayList<>();
         //Creación de productos
 
         /*Usar una vez la creación para verificar que se guardan en el archivo*/

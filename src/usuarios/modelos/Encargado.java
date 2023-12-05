@@ -24,7 +24,7 @@ public class Encargado extends Usuario{
      * @param apellido Apellido encargado
      * @param nombre Nombre encargado
      */
-    public Encargado(String correo, String clave, String apellido, String nombre) {
+    public Encargado(String correo, String apellido, String nombre, String clave) {
         super(correo, apellido, nombre, clave);
     }
 
