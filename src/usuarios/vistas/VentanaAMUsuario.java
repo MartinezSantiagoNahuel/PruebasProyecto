@@ -254,9 +254,6 @@ public class VentanaAMUsuario extends JDialog {
         String nombre = this.txtNombre.getText().trim();
         String clave = new String(this.passClave.getPassword());
         String claveRepetida = new String(this.passClaveRep.getPassword());
-        
-        String passclaverep = "";
-        char[] claveRepAux = this.passClaveRep.getPassword();
 
         Perfil perfil = ((ModeloComboPerfiles) this.comboPerfiles.getModel()).obtenerPerfil();
         
