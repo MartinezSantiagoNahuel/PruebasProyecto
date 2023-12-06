@@ -104,6 +104,4 @@ public class ProductoDelPedido {
     public String toString() {
         return "ProductoDelPedido{" + "cantidad=" + cantidad + ", unProducto=" + unProducto + '}' + "\n";
     }
-    
-    
 }

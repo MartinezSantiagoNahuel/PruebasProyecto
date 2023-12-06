@@ -20,8 +20,7 @@ import usuarios.modelos.Perfil;
 import usuarios.modelos.Usuario;
 
 /**
- * Ventana destinada al Alta y Modificación de los Usuarios del programa
- *
+ * Ventana destinada al Alta y Modificación de los Usuarios del programa.
  * @author Ana Kuenneth
  */
 public class VentanaAMUsuario extends JDialog {
@@ -255,18 +254,9 @@ public class VentanaAMUsuario extends JDialog {
         String nombre = this.txtNombre.getText().trim();
         String clave = new String(this.passClave.getPassword());
         String claveRepetida = new String(this.passClaveRep.getPassword());
-//        String clave = "";
-//        char[] passclave = this.passClave.getPassword();
-//        for (int i = 0; i < passclave.length; i++) {
-//            clave += passclave[i];
-//        }
-
         
         String passclaverep = "";
         char[] claveRepAux = this.passClaveRep.getPassword();
-//        for (int i = 0; i < claveRepAux.length; i++) {
-//            passclaverep += claveRepAux[i];
-//        }
 
         Perfil perfil = ((ModeloComboPerfiles) this.comboPerfiles.getModel()).obtenerPerfil();
         

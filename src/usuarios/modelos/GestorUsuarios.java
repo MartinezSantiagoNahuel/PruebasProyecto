@@ -90,9 +90,6 @@ public class GestorUsuarios implements IGestorUsuarios{
         
         Collections.sort(this.usuarios, apellidoComp); 
         return this.usuarios;
-
-//        Collections.sort(usuarios);
-//        return usuarios;
     }
     
     

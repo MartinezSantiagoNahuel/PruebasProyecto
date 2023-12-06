@@ -33,4 +33,18 @@ public enum Estado {
     public String toString() {
         return this.value ;
     }
+    
+    /**
+     * Devuelve el estado correspondiente a partir del valor recibido.
+     * @param value Estado en forma de String
+     * @return Un estado
+     */
+    public static Estado fromString(String value) {
+        for (Estado estado : Estado.values()) {
+            if (estado.value.equalsIgnoreCase(value)) {
+                return estado;
+            }
+        }
+        return null;
+    }
 }

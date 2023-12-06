@@ -33,4 +33,17 @@ public enum Categoria {
         return this.value;
     }
     
+    /**
+     * Devuelve la categoria correspondiente a partir del valor recibido.
+     * @param value Categoria en forma de String
+     * @return Una categoría
+     */
+    public static Categoria fromString(String value) {
+        for (Categoria categoria : Categoria.values()) {
+            if (categoria.value.equalsIgnoreCase(value)) {
+                return categoria;
+            }
+        }
+        return null;
+    }
 }

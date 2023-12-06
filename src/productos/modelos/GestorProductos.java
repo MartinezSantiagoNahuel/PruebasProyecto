@@ -200,37 +200,38 @@ public class GestorProductos implements IGestorProductos{
      */
     public void leerArchivo(){
         BufferedReader br = null;
-        File file = new File(this.archivo);
-        if (file.exists()) {
-            try {
+        
+        try {
+            File file = new File(this.archivo);
+            if (file.exists()) {
                 FileReader fr = new FileReader(file);
                 br = new BufferedReader(fr);
                 String cadena;
-                while((cadena = br.readLine()) != null) {
+                while((cadena = br.readLine()) == null) {
                     String[] vector = cadena.split(",");
-                    Estado estado = Estado.valueOf(vector[0]);
+                    Estado estado = Estado.fromString(vector[0]);
                     int codigo = Integer.parseInt(vector[1]);
                     String descripcion = vector[2];
                     float precio = Float.parseFloat(vector[3]);
-                    Categoria categoria = Categoria.valueOf(vector[4]);
+                    Categoria categoria = Categoria.fromString(vector[4]);
                            
                     Producto unProducto = new Producto(codigo, descripcion, categoria, estado, precio);
                     this.productos.add(unProducto); 
                 }
+            }    
                 
-            }
-            catch (IllegalArgumentException | IOException ex) {
+        }
+        catch (IllegalArgumentException | IOException ex) {
                 System.out.println(ERROR_LECTURA_ARCHIVO);
                 ex.printStackTrace();
-            }
-            finally {
-                if (br != null) {
-                    try {
-                        br.close();
-                    }
-                    catch (IOException ioe) {
-                        
-                    }
+        }
+        finally {
+            if (br != null) {
+                try {
+                    br.close();
+                }
+                catch (IOException ioe) {
+                    ioe.printStackTrace();
                 }
             }
         }
@@ -247,18 +248,14 @@ public class GestorProductos implements IGestorProductos{
             for (Producto producto : this.productos) {
                 String linea;
                 linea = producto.verEstado() + ",";
-                System.out.println(linea);
                 linea += Integer.toString(producto.verCodigo()) + ",";
-                System.out.println(linea);
                 linea += producto.verDescripcion() + ",";
-                System.out.println(linea);
                 linea += Float.toString(producto.verPrecio()) + ",";
-                System.out.println(linea);
                 linea += producto.verCategoria(); 
-                System.out.println(linea);
                 bw.write(linea);
                 bw.newLine();
             }
+            bw.flush();
         } catch (IOException ioe) {
             System.out.println(ERROR_ESCRITURA_ARCHIVO);
             ioe.printStackTrace();

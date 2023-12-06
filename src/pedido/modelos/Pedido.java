@@ -194,6 +194,4 @@ public class Pedido implements Comparable<Pedido>{
     public String toString() {
         return "Pedido{" + "numero=" + numero + ", estado=" + estado + ", fechaYhora=" + fechaYhora + ", unCliente=" + unCliente + ", pdp=" + pdp + '}' + "\n";
     }
-    
-    
 }

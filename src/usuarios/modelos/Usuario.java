@@ -155,9 +155,9 @@ public abstract class Usuario implements Comparable<Usuario>{
     public abstract List<Pedido> verPedidos();
     
     /**
-     * 
-     * @param o
-     * @return 
+     * Método encargado del ordenamiento de los usuarios
+     * @param o Un usuario
+     * @return resultado de la comparacion de los usuarios para el ordenamiento
      */
     @Override
     public int compareTo(Usuario o) {

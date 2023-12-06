@@ -120,7 +120,6 @@ public class ControladorPrincipalTP7  {
         
         establecerLookAndFeel("Nimbus"); 
         VentanaAMUsuario ventanaAUsuario = new VentanaAMUsuario(null);
-              
         System.out.println("USUARIOS");
         System.out.println("=====");
         usuarios=gu.verUsuarios();
